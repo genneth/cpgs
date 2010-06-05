@@ -1,0 +1,119 @@
+\documentclass[10pt,english]{report}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose}
+\pagestyle{plain}
+\usepackage{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage[unicode=true, pdfusetitle,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=true,
+ citecolor=black,filecolor=black,linkcolor=black,urlcolor=black]
+ {hyperref}
+\usepackage[authoryear,sort&compress]{natbib}
+
+\usepackage{fouriernc}
+\usepackage{siunitx}
+\usepackage{microtype}
+\usepackage{nicefrac}
+
+\begin{document}
+
+\author{Gen Zhang\\
+	Churchill College, Cambridge}
+\title{Phenomenological approach to tissue maintenance and growth}
+
+\maketitle
+
+\setlength{\parindent}{0pt} 
+\setlength{\parskip}{1.4ex}
+
+\pagenumbering{roman}
+
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+
+This dissertation was carried out between October 2009 and June 2010 at the Cavendish Laboratory, Cambridge, under the supervision of Prof.\ Benjamin D.\ Simons.
+
+The work herein has not been submitted for any other qualification.
+
+This dissertation does not exceed 12,000 words, inclusive of tables, references and appendices.
+
+I would like to thank Prof.\ Ben Simons for his help and guidance; David Doup\'e and Phil Jones for their patience and enthusiasm for cross-discipline dialogue; and Ani Kicheva and James Briscoe for their commitment and drive for understanding the seemingly incomprehensible. I would also like to thank Allon Klein for the helpful discussions.
+
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+
+Abstract
+
+
+\tableofcontents
+
+\chapter{Introduction}
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+Introduction \citep{clayton}
+
+\chapter{Parameters of epithelial maintenance}
+
+\section{Overview}
+
+The oesophagus is lined with stratified squamous epithelium. That is, it consists of layers of keratinocytes and appears flat and featureless. It is a simple tissue which undergoes constant renewal through adult life. Structurally, it is almost identical to the mammalian interfollicular epidermis considered by \citet{clayton}, so it is a good model tissue for understanding cell fate choice and tissue maintenance.
+
+Proliferation in the oesophageal epithelium is confined to cells in the basal layer \citep{leblond}. These proliferating cells may commit to terminal differentiation and exit the cell cycle, and migrate (stratify) into the first suprabasal layer. They then undergo dramatic changes whilst continuing migration upwards, which eventually result in their loss by shedding at the surface \citep{seery}.
+
+TODO: diagram of tissue
+
+\citet{klein08} introduced a non-equilibrium model for the homoeostatic maintenance, based around a single population of \emph{committed progenitors} (CP) cells:
+
+TODO: division model
+
+Cell division, stratification and fate choice are assumed to be stochastic and independent. Such a process falls into the well-studied class of \emph{branching processes} \citep{athreya&ney}, and are known to be tractable. The three parameters $\lambda$, $\gamma$ and $r$ are the only parameters of the system and for a given initial condition completely determine subsequent evolution by the master equation:
+\begin{align}
+\nonumber
+\frac{dP_{m,n,l}}{dt} &= \lambda\left[r (m-1)P_{m-1,n,l} + (1-2r)mP_{m,n-1,l} + r(m+1)P_{m+1,n-2,l} - mP_{m,n,l}\right] \\
+                    &+ \gamma\left[(n+1)P_{m,n+1,l-1} - nP_{m,n,l}\right]
+\end{align}
+where $P_{m,n,l}$ are the probabilities of seeing a clone with $m$ committed progenitors, $n$ terminally differentiated cells in the basal layer, and $l$ suprabasal cells. For homoeostasis, the proportion $\rho$ of CP cells in the basal layer must obey
+\begin{equation}
+\rho \lambda = (1-\rho) \gamma.\label{eq:homoeostatic-rho}
+\end{equation}
+In fact, for any initial condition the actual proportion will converge to this homoeostatic value.
+
+Experimentally, a representative population of progenitor cells are labelled with an inducible genetic marker expressing the enhanced yellow fluorescent protein (EYFP) gene. Induction proceeds via drug (tamoxifen) treatment and,  importantly, may be kept to a low frequency, such that individual clones may be resolved with confidence. Whilst shedding of suprabasal cells in a clone are not significant, it is possible to collect statistics of the number of basal and suprabasal cells in each clone. At longer times, suprabasal counts are not reliable, but basal statistics are still accessible.
+
+It is then a simple matter of inference to extract from the experimental data the parameters $\lambda$, $\rho$ and $r$, and thus by equation \eqref{eq:homoeostatic-rho} the stratification rate $\gamma$. In section \ref{sec:ki67}, comparing the parameters obtained this way against the methodology used in \citet{clayton}, we find some discrepancies and come to the conclusion that the oft-used proliferation marker Ki67 is in fact not tight, and fail to label some cells still in cycle. Intriguingly, it is found that $\rho \simeq 1/2$, suggesting that stratification and division may be linked.
+
+Against this back drop of quantitative measurements of cell fate, the effect of drug treatment with all-trans retinoic acid (ATRA) is characterised in section \ref{sec:atra}. We find that the only effect is an increase of division rate $\lambda$, with a proportional response in $\gamma$, such that $\rho$ is kept constant. This is enough to explain all the clonal data, without invoking potentially non-equilibrium transient behaviour. In particular, it side-steps the confounding complications that hampered the analysis in \citet[][chapter 4]{kleinthesis}.
+
+In section \ref{sec:oesophagus-stem} we investigate the claim that there is a discrete population of stem cells \citep{kabalis}, and find some support in the anomalous proportions of single cell clones. However, they are largely quiescent and make negligible contributions to homoeostatic maintenance.
+
+\section{Numerical practicalities}
+
+\section{\label{sec:ki67}Ki67 is not a good marker}
+
+\section{\label{sec:atra}The effects of ATRA, quantitatively}
+
+\section{\label{sec:oesophagus-stem}Stem cells in the oesophagus}
+
+\section{Discussion}
+
+\chapter{Models of homoeostasis}
+
+\chapter{Spinal chord}
+
+\chapter{Discussion and future work}
+
+
+\newpage
+\addcontentsline{toc}{chapter}{References}
+\renewcommand\bibname{References}
+\bibliographystyle{abbrvnat}
+\bibliography{cpgs}
+
+\end{document}

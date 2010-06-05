@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library>
+<manage_target braces="true" utf8="true">cpgs.bib</manage_target>
+<library_folder monitor="true"></library_folder>
+<taglist>
+</taglist>
+<doclist>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>PhysRevE.76.021910</key>
+    <notes></notes>
+    <bib_type>Article</bib_type>
+    <bib_doi></bib_doi>
+    <bib_title>Kinetics of cell division in epidermal maintenance</bib_title>
+    <bib_authors>Klein, Allon M. and Doupé, David P. and Jones, Phillip H. and Simons, Benjamin D.</bib_authors>
+    <bib_journal>Phys. Rev. E</bib_journal>
+    <bib_volume>76</bib_volume>
+    <bib_number>2</bib_number>
+    <bib_pages>021910</bib_pages>
+    <bib_year>2007</bib_year>
+    <bib_extra key="Doi">10.1103/PhysRevE.76.021910</bib_extra>
+    <bib_extra key="Month">Aug</bib_extra>
+    <bib_extra key="Numpages">13</bib_extra>
+    <bib_extra key="Publisher">American Physical Society</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>klein08</key>
+    <notes></notes>
+    <bib_type>article</bib_type>
+    <bib_doi>10.1103/PhysRevE.77.031907</bib_doi>
+    <bib_title>Mechanism of murine epidermal maintenance: Cell division and the voter model</bib_title>
+    <bib_authors>Klein, Allon M. and Doup\&apos;e, David P. and Jones, Philip H. and Simons, Benjamin D.</bib_authors>
+    <bib_journal>Phys. Rev. E</bib_journal>
+    <bib_volume>77</bib_volume>
+    <bib_number>3</bib_number>
+    <bib_pages>031907</bib_pages>
+    <bib_year>2008</bib_year>
+    <bib_extra key="Month">Mar</bib_extra>
+    <bib_extra key="Numpages">14</bib_extra>
+    <bib_extra key="Publisher">American Physical Society</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>clayton</key>
+    <notes></notes>
+    <bib_type>article</bib_type>
+    <bib_doi></bib_doi>
+    <bib_title>A single type of progenitor cell maintains normal epidermis</bib_title>
+    <bib_authors>Clayton, E. and Doup\&apos;e, D. P. and Klein, A. M. and Winton, D. J. and Simons, B. D. and Jones, P. H.</bib_authors>
+    <bib_journal>Nature</bib_journal>
+    <bib_volume>446</bib_volume>
+    <bib_number>7132</bib_number>
+    <bib_pages>185-189</bib_pages>
+    <bib_year>2007</bib_year>
+    <bib_extra key="Publisher">Nature Publishing Group</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>leblond</key>
+    <notes></notes>
+    <bib_type>article</bib_type>
+    <bib_doi>10.1002/aja.1001060305</bib_doi>
+    <bib_title>Cell proliferation and migration as revealed by radioautography after injection of thymidine-H3 into male rats and mice</bib_title>
+    <bib_authors>Messier, B. and Leblond, C. P.</bib_authors>
+    <bib_journal>Am. J. Anat.</bib_journal>
+    <bib_volume>106</bib_volume>
+    <bib_number></bib_number>
+    <bib_pages>247-85</bib_pages>
+    <bib_year>1960</bib_year>
+    <bib_extra key="pmid">13769795</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>seery</key>
+    <notes></notes>
+    <bib_type>article</bib_type>
+    <bib_doi></bib_doi>
+    <bib_title>Stem cells of the oesophageal epithelium</bib_title>
+    <bib_authors>Seery, J. P.</bib_authors>
+    <bib_journal>Journal of cell science</bib_journal>
+    <bib_volume>115</bib_volume>
+    <bib_number>9</bib_number>
+    <bib_pages>1783</bib_pages>
+    <bib_year>2002</bib_year>
+    <bib_extra key="Publisher">Co Biol</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>athreya&amp;ney</key>
+    <notes></notes>
+    <bib_type>book</bib_type>
+    <bib_doi></bib_doi>
+    <bib_title>Branching processes</bib_title>
+    <bib_authors>Athreya, K. B. and Ney, P. E.</bib_authors>
+    <bib_journal></bib_journal>
+    <bib_volume></bib_volume>
+    <bib_number></bib_number>
+    <bib_pages></bib_pages>
+    <bib_year>2004</bib_year>
+    <bib_extra key="publisher">Dover Pubns</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>tediousharvard</key>
+    <notes></notes>
+    <bib_type>article</bib_type>
+    <bib_doi></bib_doi>
+    <bib_title>Exact solution of a two-type branching process: Clone size distribution in cell division kinetics</bib_title>
+    <bib_authors>Antal, Tibor and Krapivsky, P. L.</bib_authors>
+    <bib_journal></bib_journal>
+    <bib_volume></bib_volume>
+    <bib_number></bib_number>
+    <bib_pages></bib_pages>
+    <bib_year>2009</bib_year>
+    <bib_extra key="eprint">0908.0484v1</bib_extra>
+    <bib_extra key="Url">http://www.citebase.org/abstract?id=oai:arXiv.org:0908.0484</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>kleinthesis</key>
+    <notes></notes>
+    <bib_type>phdthesis</bib_type>
+    <bib_doi></bib_doi>
+    <bib_title>The laws of cell fate in epidermal maintenance</bib_title>
+    <bib_authors>Allon M. Klein</bib_authors>
+    <bib_journal></bib_journal>
+    <bib_volume></bib_volume>
+    <bib_number></bib_number>
+    <bib_pages></bib_pages>
+    <bib_year>2008</bib_year>
+    <bib_extra key="month">April</bib_extra>
+    <bib_extra key="school">Cambridge University</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>kabalis</key>
+    <notes></notes>
+    <bib_type>article</bib_type>
+    <bib_doi></bib_doi>
+    <bib_title>A subpopulation of mouse esophageal basal cells has properties of stem cells with the capacity for self-renewal and lineage specification</bib_title>
+    <bib_authors>Kalabis, J. and Oyama, K. and Okawa, T. and Nakagawa, H. and Michaylira, C. Z. and Stairs, D. B. and Figueiredo, J. L. and Mahmood, U. and Diehl, J. A. and Herlyn, M. and Anil K. Rustgi</bib_authors>
+    <bib_journal>The Journal of clinical investigation</bib_journal>
+    <bib_volume>118</bib_volume>
+    <bib_number>12</bib_number>
+    <bib_pages>3860</bib_pages>
+    <bib_year>2008</bib_year>
+    <bib_extra key="Publisher">American Society for Clinical Investigation</bib_extra>
+  </doc>
+</doclist>
+</library>
