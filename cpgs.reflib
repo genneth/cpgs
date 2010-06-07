@@ -237,5 +237,21 @@
     <bib_year>2005</bib_year>
     <bib_extra key="Publisher">John Wiley &amp; Sons</bib_extra>
   </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>atraqualitative</key>
+    <notes></notes>
+    <bib_type>Article</bib_type>
+    <bib_doi></bib_doi>
+    <bib_title>Retinoid metabolism in the skin</bib_title>
+    <bib_authors>Roos, T. C. and Jugert, F. K. and Merk, H. F. and Bickers, D. R.</bib_authors>
+    <bib_journal>Pharmacological reviews</bib_journal>
+    <bib_volume>50</bib_volume>
+    <bib_number>2</bib_number>
+    <bib_pages>315</bib_pages>
+    <bib_year>1998</bib_year>
+    <bib_extra key="Publisher">ASPET</bib_extra>
+  </doc>
 </doclist>
 </library>

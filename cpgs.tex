@@ -24,6 +24,7 @@
 \usepackage{ccaption}
 \captionwidth{5in}
 \changecaptionwidth
+\captionnamefont{\bfseries}
 
 \begin{document}
 
@@ -33,8 +34,8 @@
 
 \maketitle
 
-\setlength{\parindent}{0pt} 
-\setlength{\parskip}{1.4ex}
+%\setlength{\parindent}{0pt} 
+%setlength{\parskip}{1.4ex}
 
 \pagenumbering{roman}
 
@@ -71,11 +72,17 @@ The oesophagus is lined with stratified squamous epithelium. That is, it consist
 
 Proliferation in the oesophageal epithelium is confined to cells in the basal layer \citep{leblond}. These proliferating cells may commit to terminal differentiation and exit the cell cycle, and migrate (stratify) into the first suprabasal layer. They then undergo dramatic changes whilst continuing migration upwards, which eventually result in their loss by shedding at the surface \citep{seery}.
 
-TODO: diagram of tissue
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=4in]{oesophagus-anatomy.png}
+\end{figure}
 
 \citet{klein08} introduced a non-equilibrium model for the homoeostatic maintenance, based around a single population of \emph{committed progenitors} (CP) cells:
 
-TODO: division model
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=4in]{oesophagus-division-process.png}
+\end{figure}
 
 Cell division, stratification and fate choice are assumed to be stochastic and independent. Such a process falls into the well-studied class of \emph{branching processes} \citep{athreya&ney}, and are known to be tractable. The three parameters $\lambda$, $\gamma$ and $r$ are the only parameters of the system and for a given initial condition completely determine subsequent evolution by the master equation:
 \begin{align}
@@ -95,7 +102,7 @@ Experimentally, a representative population of progenitor cells are labelled wit
 
 It is then a simple matter of inference to extract from the experimental data the parameters $\lambda$, $\rho$ and $r$, and thus by equation \eqref{eq:homoeostatic-rho} the stratification rate $\gamma$. In section \ref{sec:ki67}, comparing the parameters obtained this way against the methodology used in \citet{clayton}, we find some discrepancies and come to the conclusion that the oft-used proliferation marker Ki67 is in fact not tight, and fail to label some cells still in cycle. Intriguingly, it is found that $\rho \simeq 1/2$, suggesting that stratification and division may be linked.
 
-Against this back drop of quantitative measurements of cell fate, the effect of drug treatment with all-trans retinoic acid (ATRA) is characterised in section \ref{sec:atra}. We find that the only effect is an increase of division rate $\lambda$, with a proportional response in $\gamma$, such that $\rho$ is kept constant. This is enough to explain all the clonal data, without invoking potentially non-equilibrium transient behaviour. In particular, it side-steps the confounding complications that hampered the analysis in \citet[][chapter 4]{kleinthesis}.
+Against this back drop of quantitative measurements of cell fate, the effect of drug treatment with \emph{all-trans retinoic acid} (ATRA) is characterised in section \ref{sec:atra}. We find that the only effect is an increase of division rate $\lambda$, with a proportional response in $\gamma$, such that $\rho$ is kept constant. This is enough to explain all the clonal data, without invoking potentially non-equilibrium transient behaviour. In particular, it side-steps the confounding complications that hampered the analysis in \citet[][chapter 4]{kleinthesis}.
 
 In section \ref{sec:oesophagus-stem} we investigate the claim that there is a discrete population of stem cells \citep{kabalis}, and find some support in the anomalous proportions of single cell clones. However, they are largely quiescent and make negligible contributions to homoeostatic maintenance.
 
@@ -103,7 +110,10 @@ In section \ref{sec:oesophagus-stem} we investigate the claim that there is a di
 
 \citet{klein08} and \citet{tediousharvard} made extremely detailed studies of equation \eqref{eq:ABC-master}; more specifically, they studied the reduced two-type process where stratified cells were not counted, i.e.\ only basal clonal statistics were considered. They showed that this model exhibits scaling, where in the large time limit $t\rightarrow\infty$ the clone size distribution becomes exponential: $$P^\textrm{surv.}_n \sim \exp\left(-\frac{n}{\left\langle n^\textrm{surv.} \right\rangle}\right)$$ with a linear growth of the average size of surviving clones $\left\langle n^\textrm{surv.} \right\rangle \rightarrow t/\tau$ and characteristic time scale $\tau = \rho/r\lambda$. This can be shown by noting that large clones are macroscopic, and fluctuations in the proportion of CP cells versus differentiated cells are small --- in essence large clones are overwhelmingly likely to be representative of the tissue as a whole. \citealt{tediousharvard} have shown that this process happens remarkably quickly, and clones of even ten cells become quite representative. Thus, we can erase the difference between CP and differentiated cells, and average them into a \emph{representative basal cell} obeying extremely simple dynamics: 
 
-TODO: average cell division
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=3in]{oesophagus-average-division-process.png}
+\end{figure}
 
 This is now a classic \emph{one-type critical branching process} \citep{athreya&ney}, and has an exact solution. The clone size distribution is geometric at all times $$P^\textrm{surv.}_n \sim \left(1-\frac{1}{\left\langle n^\textrm{surv.} \right\rangle}\right)^n$$ with an average clone size $\left\langle n^\textrm{surv.} \right\rangle = 1 + t/\tau$. Confirmation of this scaling behaviour in \citet{clayton} lead to the overturning of the previously incumbent stem/transit amplifying model \citep{stemta1,stemta2,stemta3}, in favour of the current single progenitor model.
 
@@ -147,15 +157,32 @@ Armed then with the necessary tools, it is a straightforward matter to apply Bay
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[height=4in]{oes-combined-prior.png}
+	\includegraphics[height=3in]{oes-combined-prior.png}
 	\caption{\label{fig:oes-inference-result}The inference from short time full counting data is in orange, showing $68\%$ and $95\%$ confidence regions. The inference from long time basal data is show in blue. The combined data produces the region (68\% and $95\%$) shown in green, with projections shown on the axes planes. The mean lies at $\rho = 0.52 \pm 0.07$, $r = 0.19 \pm 0.04$, $\lambda = (0.77 \pm 0.05) /\textrm{week}^{-1}$.}
 \end{figure}
 
-Using Ki67 to stain for progenitors, it was estimated $\rho \simeq 0.4$. It is discrepant with the clonal inference result $\rho = 0.52 \pm 0.07$. We suggest that the differences are due to a difference of what proliferation means. Ki67 is expressed during ribosomal RNA transcription \citep{ki67rRNA}, so measurements based on it are essentially measures of rRNA activity. Our methodology here more directly measures proliferation by potential cell division, purely on cell fate. The two can be reconciled if we postulate that there is a period of the cell cycle where rRNA activity ceases, before re-activating if the cell decides to remain in cycle. This point of view is further supported by companion studies in mice ear epidermis, where the cell cycle time is much longer at $\sim 4~\textrm{weeks}$; there, the Ki67 expression rate is around $\rho \simeq 0.2$, but clonal fate inference gives again $\rho \simeq 0.5$. This larger discrepancy can then be assigned to the increased cell cycle time, presumably lengthening the period when rRNA activity is quiescent.
+Using Ki67 to stain for progenitors, it was estimated $\rho \simeq 0.4$. It is discrepant with the clonal inference result $\rho = 0.52 \pm 0.07$. We suggest that the differences are due to a difference of what proliferation means. Ki67 is expressed during ribosomal RNA transcription \citep{ki67rRNA}, so measurements based on it are essentially measures of rRNA activity. Our methodology here more directly measures proliferation by potential cell division, purely on cell fate. The two can be reconciled if we postulate that there is a period of the cell cycle where rRNA activity ceases, before re-activating if the cell decides to remain in cycle. This point of view is further supported by companion studies in mice ear epidermis, where the cell cycle time is much longer at $\sim 4~\textrm{weeks}$; there, the Ki67 expression rate is around $\rho \simeq 0.24$, but clonal fate inference gives again $\rho \simeq 0.50$. This larger discrepancy can then be assigned to the increased cell cycle time, presumably lengthening the period when rRNA activity is quiescent.
 
 \section{\label{sec:atra}The effects of ATRA, quantitatively}
 
+In evaluating drug treatment, it is desirable to be able to be able to quantify the effects on the cellular level, as well as the overall phenotype changes. Conventional histology is unable to measure with precision the changes to cell proliferation rate or differentiation rate, or fate choices. With the base model that we have developed above, it is natural to ask if we can do better. As a prototypic drug, we studied the effects of \emph{all-trans retinoic acid} (ATRA) It is observed that in epidermis, ATRA leads to a new homoeostatic state, with increased suprabasal thickness, but no qualitative changes in the division process \citep{atraqualitative}. Under the assumption that oesophagus is structurally identical, we consider two experiments:
 
+\begin{enumerate}
+\item inducible genetic labelling after a few weeks of treatment with ATRA; full clonal statistics then characterise the new homoeostatic state;
+\item begin ATRA treatment after labelling; clonal statistics reflect the transient behaviour in switching from one state to another.
+\end{enumerate}
+
+Crucially since the overall cell division process is conserved, and homoeostasis is retained, it is possible to apply the Bayesian inference framework already developed to the homoeostatic data, and directly measure the changes in the parameters of the division process. Doing so, we obtain $\rho = 0.5$, $r = 0.22$ and $\lambda = 1.4/\textrm{week}^{-1}$; i.e.\ the only significant changes are an increase in cell division rate, and a proportional change in cell stratification rate. This lends strong support that the two processes are actually locked together via some form of signalling, biochemical or physical (e.g.\ elastic stresses).
+
+\citet[][chapter 4]{kleinthesis} considers a similar experimental set up in mouse tail epidermis. There, it is observed that a three-fold increase of $\rho$, as measured by Ki67 expression, occurs (increase from $19\%$ to $57\pm4\%$). With our current view on the role of Ki67 in the cell cycle (see section \ref{sec:ki67}), our interpretation is that the shortened cell cycle reduces the rRNA quiescent period, and thus boosts the Ki67 expression \emph{without changing the progenitor proportion}. In particular, this allows us to sidestep the complex theory of non-equilibrium transition between homoeostatic states considered by \citet{kleinthesis}. Instead, we can simply use the existing inference framework to effectively ask the question: what stage (i.e.\ number of mean cell cycle time) does this data set correspond to? This works equally well for wild-type (non-ATARA-treated), ATRA-homoeostasis and introduction of ATRA post-labelling. We find consistency with a model where ATRA increases cell cycle rate immediately to a new value, corresponding to the ATRA-homoeostatic rate.
+
+Figure \ref{fig:oes-atra} show that the model accurately predicts the observed clonal size distribution.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[height=2in]{oes-atra-bubbles.png}
+	\caption{\label{fig:oes-atra}Orange filled circles show the observed clonal size distribution for ATRA pre-treated tissue, $3$ weeks after induction; blue dashed circles show the theoretical predictions. Deviations are well contained by stochastic noise and uncertainty in model parameters.}
+\end{figure}
 
 \section{\label{sec:oesophagus-stem}Stem cells in the oesophagus}
 
