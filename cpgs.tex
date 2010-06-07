@@ -39,19 +39,9 @@
 
 \pagenumbering{roman}
 
-\chapter*{Preface}
-\addcontentsline{toc}{chapter}{Preface}
-
-This dissertation was carried out between October 2009 and June 2010 at the Cavendish Laboratory, Cambridge, under the supervision of Prof.\ Benjamin D.\ Simons.
-
-The work herein has not been submitted for any other qualification.
-
-This dissertation does not exceed 12,000 words, inclusive of tables, references and appendices.
-
-I would like to thank Prof.\ Ben Simons for his help and guidance; David Doup\'e and Phil Jones for their patience and enthusiasm for cross-discipline dialogue; and Ani Kicheva and James Briscoe for their commitment and drive for understanding the seemingly incomprehensible. I would also like to thank Allon Klein for the helpful discussions.
-
-\chapter*{Abstract}
+\begin{abstract}
 \addcontentsline{toc}{chapter}{Abstract}
+\end{abstract}
 
 Abstract
 
@@ -186,9 +176,55 @@ Figure \ref{fig:oes-atra} show that the model accurately predicts the observed c
 
 \section{\label{sec:oesophagus-stem}Stem cells in the oesophagus}
 
-\section{Discussion}
+A recent study \citep{kabalis} has identified a sub-population of basal cells in oesophageal epithelium which are almost quiescent in normal homoeostasis, capable of reconstituting the epithelium in cultures and contribute cells to repair injured epithelium \emph{in vivo}; thus, they fulfil a functional definition of stem cells. At first glance, their quiescence in homoeostasis preclude our methodology so far from identifying them ore characterising them. Upon closer inspection however, if any of them get labelled, there would be a slight change of the clonal distribution, in the form of a population whose average size did not grow with time (or at least with a significantly different time scale).
+
+We were then led to look closely at single cell basal clones, i.e. those with one basal cell, and no suprabasal cells at all. Suppose that stem cells undergo (near) balanced division into stem cells and committed progenitors; further, assume that $\lambda = \gamma$, i.e. $\rho=1$ exactly, we can then write time evolution of single cell clones (might be stem, might be progenitor/post-mitotic):
+\begin{equation}
+p_\textrm{single} = \rho_S \exp(-\Lambda t) + (1-\rho_S) \exp(\lambda t),
+\label{eq:single-cell-clones}
+\end{equation}
+where $\rho_S$ is the proportion of labelled cells which are stem cells, and $\Lambda$ is the division rate of those stem cells. Note that although stem cells are likely be highly responsive to environmental effects (such as local density fluctuations) and thus not stochastic in the main, in homoeostasis we can effective average over such local fluctuations, and approximate their statistical behaviour as stochastic. Setting $\lambda = 0.76/\textrm{week}^{-1}$ (see section \ref{sec:ki67}), we can use a Bayesian method to infer the parameters $\Lambda$ and $\rho_S$; again, in the absence of more cogent biological constraints, we employ a maximum entropy prior: uniform in $\rho_S$, log-uniform in $\Lambda$.
+
+\begin{figure}[htb]
+	\centering
+	\hfill\includegraphics[height=2in]{single-cell-inference.png}\hfill\includegraphics[height=2in]{single-cell-clones.png}\hfill~
+	\caption{\label{fig:oes-stem-parameters}\textbf{Left} shows the posterior distribution for the stem cell parameters; there is a peak at $\rho_S = 0.044$, $1/\Lambda = 30~\textrm{weeks}$. \textbf{Right} shows the fit against the measured single cell clones; blue error regions are due stochastic noise, at $1$- and $2\sigma$ confidence regions; the initial steep slope is the predicted single cell frequency if there were no stem cells. }
+\end{figure}
+
+Figure \ref{fig:oes-stem-parameters} shows the results of the inference, and its fit against the observed frequencies. Obviously, with such low counts, it is hard to be very precise with the parameter fits. However, it is notable that the observed counts absolutely do not fit a model with no stem cells. The inferred division rate $\Lambda$ is reasonably free from systematic errors. On the other hand, the proportion $\rho_S$ should not be directly identified with the proportion of stem cells in the basal layer. There may be significant labelling bias, possibly even dependent on whether a given stem cell is active or not; on the other hand, it should only be a factor of a few, as opposed to orders of magnitude in error.
+
+Given that statistically, there does indeed seem to a be population of quiescent cells, it is nature to go and look for them. Experimentally, it was suggested that the protein CD34 is a marker for stem-like behaviour. Whilst some correlations were found between single cell clones and CD34$^\textrm{High}$ cells, it was not entirely convincing. Currently, it is thought that CD34 is simply not a tight marker. Investigations are continuing.
+
+\section{Conclusions}
+
+We have seen how clonal size distributions which include suprabasal counts lead to a quantitative theory of epithelial maintenance. To be fashionable, one could call this full counting statistics. Using this theory we looked at three things:
+
+\begin{enumerate}
+\item Comparison of the physiologically defined proportion of proliferating cells in the basal layer with the widely accepted proliferation marker Ki67 reveals significant differences. These differences are even more pronounced in slower cycling tissues. We conjecture the existence of a stage of the cell cycle where rRNA transcription is absent.
+
+\item We can quantitatively characterise drug effects, such as for ATRA. There, we found that the effect is an increase in division rate of progenitors, with a matching increase in stratification rates such that the overall proportion of progenitors in the basal layer remains constant.
+
+\item Following a suggestion of functionally stem cells in the basal layer, we examined in detail the fate of single cell clones and found some circumstantial evidence in favour. Even while lacking a clear genetic marker, we were able to make some quantitative characterisation of them.
+\end{enumerate}
+
+Having this theory allows us to critically examine in great detail the accepted dogma of cell cycle, make quantitative predictions of drug effects and find evidence for further modifications to underlying cell division processes even in the face of a lack of firm biochemical signatures.
+
+Some clear questions remain:
+
+\begin{itemize}
+\item The underlying division process used here is essentially zero-dimensional. Division and stratification occur without reference to any external feedback. In particular, homoeostasis is only maintained on average. Whilst the total number may indeed be sufficiently macroscopic that fluctuations do not matter, local density fluctuations may in fact lead to break-up of the tissue. Indeed, a combination of critical branching and local fluctuations can cause logarithmic divergence in density [??]. Investigations into models with interaction occupy the next chapter.
+
+\item In a similar vein, as already mentioned, the scaling behaviour was crucial in overturning an incumbent stem/transit amplifying model, but became a sort of liability when inferring parameters. This is exactly the benefit of curse of universality classes. In effect, the zero-dimensional branching model is the prototypical model for a wide universality class, which all enjoy the same scaling function and growth rates. The precise underlying dynamics are hidden quite effectively. To explore those, we must probe on shorter time and length scales --- as we did for inferring the parameters. The goal, surely, is a phenomenological theory with a finite number of relevant operators, and robust experimental measurements of these; such a theory can then be relied upon by those investigating the precise biochemistry of cells.
+
+\item The primary experimental data used so far is \emph{cohort} clonal size distributions. As such, it is not possible to perform any autocorrelation. In some ways, the lack of this information makes the pure stochastic assumption better. Nevertheless, it seems reasonable that such time lapsed data sets would be even richer in information, but it is unclear how best to exploit such information were it available.
+
+\item The provision of homoeostasis was vital. In some ways, it is in equilibrium. True non-equilibrium processes such as development and cancer could do anything, from a purely theoretical point of view. Nevertheless, it seems a reasonable starting point to assume that such processes can be understood within the same framework, and it must be the case that the behaviour in homoeostasis constrains the ways in which it can deviate.
+
+\end{itemize}
 
 \chapter{Models of homoeostasis}
+
+
 
 \chapter{Spinal chord}
 
