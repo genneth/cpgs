@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <library>
-<manage_target braces="true" utf8="true">cpgs.bib</manage_target>
+<manage_target braces="true" utf8="false">cpgs.bib</manage_target>
 <library_folder monitor="true"></library_folder>
 <taglist>
 </taglist>
@@ -155,6 +155,87 @@
     <bib_pages>3860</bib_pages>
     <bib_year>2008</bib_year>
     <bib_extra key="Publisher">American Society for Clinical Investigation</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>expokit</key>
+    <notes></notes>
+    <bib_type>article</bib_type>
+    <bib_doi></bib_doi>
+    <bib_title>Expokit: a software package for computing matrix exponentials</bib_title>
+    <bib_authors>Sidje, R. B.</bib_authors>
+    <bib_journal>ACM Transactions on Mathematical Software (TOMS)</bib_journal>
+    <bib_volume>24</bib_volume>
+    <bib_number>1</bib_number>
+    <bib_pages>156</bib_pages>
+    <bib_year>1998</bib_year>
+    <bib_extra key="Publisher">ACM</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>stemta1</key>
+    <notes></notes>
+    <bib_type>Article</bib_type>
+    <bib_doi></bib_doi>
+    <bib_title>Stem cells of the skin epithelium</bib_title>
+    <bib_authors>Alonso, L. and Fuchs, E.</bib_authors>
+    <bib_journal>Proceedings of the National Academy of Sciences</bib_journal>
+    <bib_volume>100</bib_volume>
+    <bib_number>Suppl 1</bib_number>
+    <bib_pages>11830</bib_pages>
+    <bib_year>2003</bib_year>
+    <bib_extra key="Publisher">National Acad Sciences</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>stemta2</key>
+    <notes></notes>
+    <bib_type>Article</bib_type>
+    <bib_doi></bib_doi>
+    <bib_title>Stem cell concepts</bib_title>
+    <bib_authors>Lajtha, L. G.</bib_authors>
+    <bib_journal>Differentiation</bib_journal>
+    <bib_volume>14</bib_volume>
+    <bib_number>1-3</bib_number>
+    <bib_pages>23-33</bib_pages>
+    <bib_year>2006</bib_year>
+    <bib_extra key="Publisher">John Wiley &amp; Sons</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>stemta3</key>
+    <notes></notes>
+    <bib_type>Article</bib_type>
+    <bib_doi></bib_doi>
+    <bib_title>Epidermal label-retaining cells: background and recent applications</bib_title>
+    <bib_authors>Braun, K. M. and Watt, F. M.</bib_authors>
+    <bib_journal></bib_journal>
+    <bib_volume>9</bib_volume>
+    <bib_number>3</bib_number>
+    <bib_pages>196-201</bib_pages>
+    <bib_year>2004</bib_year>
+    <bib_extra key="Booktitle">Journal of Investigative Dermatology Symposium Proceedings</bib_extra>
+    <bib_extra key="Organization">Nature Publishing Group</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>ki67rRNA</key>
+    <notes></notes>
+    <bib_type>article</bib_type>
+    <bib_doi></bib_doi>
+    <bib_title>Ki-67 protein is associated with ribosomal RNA transcription in quiescent and proliferating cells</bib_title>
+    <bib_authors>Bullwinkel, J. and Baron-L\&quot;uhr, B. and L\&quot;udemann, A. and Wohlenberg, C. and Gerdes, J. and Scholzen, T.</bib_authors>
+    <bib_journal>Journal of cellular physiology</bib_journal>
+    <bib_volume>206</bib_volume>
+    <bib_number>3</bib_number>
+    <bib_pages>624-635</bib_pages>
+    <bib_year>2005</bib_year>
+    <bib_extra key="Publisher">John Wiley &amp; Sons</bib_extra>
   </doc>
 </doclist>
 </library>

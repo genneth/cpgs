@@ -14,12 +14,16 @@
  breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=true,
  citecolor=black,filecolor=black,linkcolor=black,urlcolor=black]
  {hyperref}
-\usepackage[authoryear,sort&compress]{natbib}
 
 \usepackage{fouriernc}
 \usepackage{siunitx}
 \usepackage{microtype}
 \usepackage{nicefrac}
+
+\usepackage[authoryear,sort&compress]{natbib}
+\usepackage{ccaption}
+\captionwidth{5in}
+\changecaptionwidth
 
 \begin{document}
 
@@ -77,7 +81,9 @@ Cell division, stratification and fate choice are assumed to be stochastic and i
 \begin{align}
 \nonumber
 \frac{dP_{m,n,l}}{dt} &= \lambda\left[r (m-1)P_{m-1,n,l} + (1-2r)mP_{m,n-1,l} + r(m+1)P_{m+1,n-2,l} - mP_{m,n,l}\right] \\
-                    &+ \gamma\left[(n+1)P_{m,n+1,l-1} - nP_{m,n,l}\right]
+                    &+ \gamma\left[(n+1)P_{m,n+1,l-1} - nP_{m,n,l}\right] \label{eq:ABC-master} \\
+\nonumber
+P_{m,n,l}(t = 0) &= \delta_{m,1} \delta_{n,0} \delta_{l,0}
 \end{align}
 where $P_{m,n,l}$ are the probabilities of seeing a clone with $m$ committed progenitors, $n$ terminally differentiated cells in the basal layer, and $l$ suprabasal cells. For homoeostasis, the proportion $\rho$ of CP cells in the basal layer must obey
 \begin{equation}
@@ -85,7 +91,7 @@ where $P_{m,n,l}$ are the probabilities of seeing a clone with $m$ committed pro
 \end{equation}
 In fact, for any initial condition the actual proportion will converge to this homoeostatic value.
 
-Experimentally, a representative population of progenitor cells are labelled with an inducible genetic marker expressing the enhanced yellow fluorescent protein (EYFP) gene. Induction proceeds via drug (tamoxifen) treatment and,  importantly, may be kept to a low frequency, such that individual clones may be resolved with confidence. Whilst shedding of suprabasal cells in a clone are not significant, it is possible to collect statistics of the number of basal and suprabasal cells in each clone. At longer times, suprabasal counts are not reliable, but basal statistics are still accessible.
+Experimentally, a representative population of progenitor cells are labelled with an inducible genetic marker expressing the enhanced yellow fluorescent protein (EYFP) gene. Induction proceeds via drug (tamoxifen) treatment and, importantly, may be kept to a low frequency, such that individual clones may be resolved with confidence. Whilst shedding of suprabasal cells in a clone are not significant, it is possible to collect statistics of the number of basal and suprabasal cells in each clone. At longer times, suprabasal counts are not reliable, but basal statistics are still accessible.
 
 It is then a simple matter of inference to extract from the experimental data the parameters $\lambda$, $\rho$ and $r$, and thus by equation \eqref{eq:homoeostatic-rho} the stratification rate $\gamma$. In section \ref{sec:ki67}, comparing the parameters obtained this way against the methodology used in \citet{clayton}, we find some discrepancies and come to the conclusion that the oft-used proliferation marker Ki67 is in fact not tight, and fail to label some cells still in cycle. Intriguingly, it is found that $\rho \simeq 1/2$, suggesting that stratification and division may be linked.
 
@@ -93,11 +99,63 @@ Against this back drop of quantitative measurements of cell fate, the effect of 
 
 In section \ref{sec:oesophagus-stem} we investigate the claim that there is a discrete population of stem cells \citep{kabalis}, and find some support in the anomalous proportions of single cell clones. However, they are largely quiescent and make negligible contributions to homoeostatic maintenance.
 
-\section{Numerical practicalities}
+\section{Scaling in theory and practice}
+
+\citet{klein08} and \citet{tediousharvard} made extremely detailed studies of equation \eqref{eq:ABC-master}; more specifically, they studied the reduced two-type process where stratified cells were not counted, i.e.\ only basal clonal statistics were considered. They showed that this model exhibits scaling, where in the large time limit $t\rightarrow\infty$ the clone size distribution becomes exponential: $$P^\textrm{surv.}_n \sim \exp\left(-\frac{n}{\left\langle n^\textrm{surv.} \right\rangle}\right)$$ with a linear growth of the average size of surviving clones $\left\langle n^\textrm{surv.} \right\rangle \rightarrow t/\tau$ and characteristic time scale $\tau = \rho/r\lambda$. This can be shown by noting that large clones are macroscopic, and fluctuations in the proportion of CP cells versus differentiated cells are small --- in essence large clones are overwhelmingly likely to be representative of the tissue as a whole. \citealt{tediousharvard} have shown that this process happens remarkably quickly, and clones of even ten cells become quite representative. Thus, we can erase the difference between CP and differentiated cells, and average them into a \emph{representative basal cell} obeying extremely simple dynamics: 
+
+TODO: average cell division
+
+This is now a classic \emph{one-type critical branching process} \citep{athreya&ney}, and has an exact solution. The clone size distribution is geometric at all times $$P^\textrm{surv.}_n \sim \left(1-\frac{1}{\left\langle n^\textrm{surv.} \right\rangle}\right)^n$$ with an average clone size $\left\langle n^\textrm{surv.} \right\rangle = 1 + t/\tau$. Confirmation of this scaling behaviour in \citet{clayton} lead to the overturning of the previously incumbent stem/transit amplifying model \citep{stemta1,stemta2,stemta3}, in favour of the current single progenitor model.
+
+Although theoretically very attractive, this long-time scaling behaviour is actually unhelpful in so far as inferring the parameters from experimental data. Since after just a few cell divisions the clone distribution becomes a featureless exponential, it is only possible to measure the characteristic time scale $\tau$ (though, as we shall see, this may be determined very accurately). The separate constituents of $\tau$ have to be measured by something other than clonal statistics: the division rate $\lambda$ may be directly measured from observation of proliferation; the proportion of proliferating progenitor cells $\rho$ may be measured from the expression of the genetic marker Ki67; and $r$ may be obtained by inverting the equation $\tau = \rho/r\lambda$. However, these all introduce additional errors, both systematic and random; worse, these errors are difficult to estimate. In particular, if the genetic marker is unreliable or inefficient (see section \ref{sec:ki67}), then this would have a very direct effect on the inferred value of $r$.
+
+To do better, it is necessary concentrate on the short-time behaviour and the approach to scaling. In particular, unlike \citet{clayton} we have access to the number of suprabasal cells in each clone, \emph{at a only a few division times}. This compels us to use a fully Bayesian method.
+
+\section{Practicalities of Bayesian inference}
+
+To apply a Bayesian method, we need a prior distribution for the parameters, and a likelihood function for seeing a particular outcome for a particular set of parameters. Without further biological motivation, a maximum entropy prior was chosen in $(\lambda, \rho, r)$-space: log-uniform in $\lambda$, uniform in $\rho$ and $r$. 
+
+At first blush, equation \eqref{eq:ABC-master} is sufficient to calculate the likelihood function. However, it is an infinite set of coupled differential equations, for practical computation we must truncate it. In the case that we are examining data involving both basal and suprabasal counts, we can use a special structure of the master equation; namely, $\dot{P}_{m,n,l}$ only depends on $P_{a,b,c}$ for $a+b+c \le m+n+l$. Our data must have a maximum clone size, and so to find the theoretical prediction is is sufficient to truncate the probabilities to only include those of a smaller or equal size. After such a truncation, it is of the form $$\frac{d\mathbf{P}}{dt} = \mathbf{TP}$$ where the transition matrix $\mathbf{T}$ is sparse. The exact solution is then $$\mathbf{P}(t) = \exp\left(\mathbf{T}t\right) \mathbf{P}_0,$$ and the matrix exponential may be taken with well-known methods using Krylov subspace techniques \citep{expokit}.
+
+The case of only basal statistics is more involved. Because the observation does not look at the number of suprabasal cells, we effectively have an infinite sum over the index $l$, and no truncation would be accurate. Instead, we use a method inspired by \citet{tediousharvard} based on generating functions. The reduced probability distribution for just the basal cells is
+\begin{align}
+\tilde{P}_{m,n} &= \sum_l P_{m,n,l}, \nonumber \\
+\frac{d\tilde{P}_{m,n}}{dt} &= \lambda\left[r (m-1)\tilde{P}_{m-1,n} + (1-2r)m\tilde{P}_{m,n-1} + r(m+1)\tilde{P}_{m+1,n-2} - m\tilde{P}_{m,n}\right] - \gamma n \tilde{P}_{m,n}, \label{eq:AB-master} 
+\end{align}
+and upon applying some generatingfunctionology
+\begin{align}
+f(x,y,t) &= \sum_{m,n} x^m y^n \tilde{P}_{m,n}(t), \nonumber \\
+f_t &= \lambda \left[ r x^2 + (1-2r) xy + r y^2 - x \right] f_x - \gamma y f_y, \label{eq:AB-gf}\\
+f(x,y,t=0) &= x. \nonumber
+\end{align}
+The partial differential equation for $f(x,y,t)$ may be solved by the method of characteristics, which converts it into a single (non-linear) ordinary differential equation in one variable; this may then be numerically integrated. Since we cannot distinguish between progenitors and cells committed to terminal differentiating, we actually care about the single variable generating function 
+\begin{equation*}
+g(z,t) = f(z,z,t) = \sum_k z^k \sum_{m+n=k} \tilde{P}_{m,n}(t).
+\end{equation*} 
+Noting $g(z,t)$ is a power series in $z$ and $g(z=1,t) = 1$ by conservation of probability, it must be the case that $g(z,t)$ converges at least on the (open) unit disc. Making the assumption that it actually converges on the closed unit disc in the complex plane, we are led to the inversion formula:
+\begin{align}
+\Pi_k(t) = \sum_{m+n=k} \tilde{P}_{m,n}(t) &= \frac{1}{2\pi i} \oint_\mathcal{C} \frac{g(z,t)}{z^{k+1}} dz \label{eq:cauchy-coefficients} \\
+	&\simeq \frac{1}{N} \sum_{j=0}^{N-1} g\left[\exp\left(\frac{2\pi ij}{N}\right),t\right] \exp\left(\frac{2\pi ijk}{N}\right) \label{eq:fft-coefficients}
+\end{align}
+where the contour $\mathcal{C}$ goes counterclockwise about the origin in the complex $z$ plane. Taking it to be the unit circle, the approximation by a sum \eqref{eq:fft-coefficients} amounts to a discrete Fourier transform, which then allows the first $N$ coefficients to be computed efficiently with only $N$ evaluation of the generating function $g(z,t)$. In practice, some adaptive oversampling is used to make guarantees on numerical accuracy.
+
+We note in passing that some information about the distribution $\Pi_k$ may be directly gleaned from the analytic properties of $g(z)$. In particular, since the ratio of successive terms $\Pi_{k} / \Pi_{k+1}$ converges to the radius of convergence of $g(z)$, it is possible to infer an exponential tail for $\Pi_k$ from the existence of singularities at a finite $\left| z \right|$, and indeed obtain the slope. It is interesting to ask what other properties may be so easily obtained; for example, whether a Gaussian tail (i.e.\ $\Pi_{k} / \Pi_{k+1} \sim k$) can be obtained `by inspection', and generally if such properties can be more directly obtained from considering the differential equation governing the generating function (e.g.\ equation \eqref{eq:AB-gf}) without having to explicitly find the solution.
 
 \section{\label{sec:ki67}Ki67 is not a good marker}
 
+Armed then with the necessary tools, it is a straightforward matter to apply Bayes' theorem and obtain posterior distributions for a given data set. Indeed, it is possible to apply this method to various different datasets, and thus gain some confidence in self-consistency. Figure \ref{fig:oes-inference-result} shows the results from both full counting statistics (basal and suprabasal counts) and only basal statistics (but over a much longer time period, with higher counts).
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[height=4in]{oes-combined-prior.png}
+	\caption{\label{fig:oes-inference-result}The inference from short time full counting data is in orange, showing $68\%$ and $95\%$ confidence regions. The inference from long time basal data is show in blue. The combined data produces the region (68\% and $95\%$) shown in green, with projections shown on the axes planes. The mean lies at $\rho = 0.52 \pm 0.07$, $r = 0.19 \pm 0.04$, $\lambda = (0.77 \pm 0.05) /\textrm{week}^{-1}$.}
+\end{figure}
+
+Using Ki67 to stain for progenitors, it was estimated $\rho \simeq 0.4$. It is discrepant with the clonal inference result $\rho = 0.52 \pm 0.07$. We suggest that the differences are due to a difference of what proliferation means. Ki67 is expressed during ribosomal RNA transcription \citep{ki67rRNA}, so measurements based on it are essentially measures of rRNA activity. Our methodology here more directly measures proliferation by potential cell division, purely on cell fate. The two can be reconciled if we postulate that there is a period of the cell cycle where rRNA activity ceases, before re-activating if the cell decides to remain in cycle. This point of view is further supported by companion studies in mice ear epidermis, where the cell cycle time is much longer at $\sim 4~\textrm{weeks}$; there, the Ki67 expression rate is around $\rho \simeq 0.2$, but clonal fate inference gives again $\rho \simeq 0.5$. This larger discrepancy can then be assigned to the increased cell cycle time, presumably lengthening the period when rRNA activity is quiescent.
+
 \section{\label{sec:atra}The effects of ATRA, quantitatively}
+
+
 
 \section{\label{sec:oesophagus-stem}Stem cells in the oesophagus}
 
