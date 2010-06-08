@@ -100,12 +100,19 @@ In section \ref{sec:oesophagus-stem} we investigate the claim that there is a di
 
 \citet{klein08} and \citet{tediousharvard} made extremely detailed studies of equation \eqref{eq:ABC-master}; more specifically, they studied the reduced two-type process where stratified cells were not counted, i.e.\ only basal clonal statistics were considered. They showed that this model exhibits scaling, where in the large time limit $t\rightarrow\infty$ the clone size distribution becomes exponential: $$P^\textrm{surv.}_n \sim \exp\left(-\frac{n}{\left\langle n^\textrm{surv.} \right\rangle}\right)$$ with a linear growth of the average size of surviving clones $\left\langle n^\textrm{surv.} \right\rangle \rightarrow t/\tau$ and characteristic time scale $\tau = \rho/r\lambda$. This can be shown by noting that large clones are macroscopic, and fluctuations in the proportion of CP cells versus differentiated cells are small --- in essence large clones are overwhelmingly likely to be representative of the tissue as a whole. \citealt{tediousharvard} have shown that this process happens remarkably quickly, and clones of even ten cells become quite representative. Thus, we can erase the difference between CP and differentiated cells, and average them into a \emph{representative basal cell} obeying extremely simple dynamics: 
 
-\begin{figure}[htb]
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=3in]{oesophagus-average-division-process.png}
 \end{figure}
 
 This is now a classic \emph{one-type critical branching process} \citep{athreya&ney}, and has an exact solution. The clone size distribution is geometric at all times $$P^\textrm{surv.}_n \sim \left(1-\frac{1}{\left\langle n^\textrm{surv.} \right\rangle}\right)^n$$ with an average clone size $\left\langle n^\textrm{surv.} \right\rangle = 1 + t/\tau$. Confirmation of this scaling behaviour in \citet{clayton} lead to the overturning of the previously incumbent stem/transit amplifying model \citep{stemta1,stemta2,stemta3}, in favour of the current single progenitor model.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=3in]{oes-scaling-b.png}
+	\caption{The basal clone size distribution displays the expected scaling behaviour, converging to an exponential.}
+\end{figure}
+
 
 Although theoretically very attractive, this long-time scaling behaviour is actually unhelpful in so far as inferring the parameters from experimental data. Since after just a few cell divisions the clone distribution becomes a featureless exponential, it is only possible to measure the characteristic time scale $\tau$ (though, as we shall see, this may be determined very accurately). The separate constituents of $\tau$ have to be measured by something other than clonal statistics: the division rate $\lambda$ may be directly measured from observation of proliferation; the proportion of proliferating progenitor cells $\rho$ may be measured from the expression of the genetic marker Ki67; and $r$ may be obtained by inverting the equation $\tau = \rho/r\lambda$. However, these all introduce additional errors, both systematic and random; worse, these errors are difficult to estimate. In particular, if the genetic marker is unreliable or inefficient (see section \ref{sec:ki67}), then this would have a very direct effect on the inferred value of $r$.
 
