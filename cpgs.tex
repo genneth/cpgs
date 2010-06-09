@@ -20,7 +20,7 @@
 \usepackage{microtype}
 \usepackage{nicefrac}
 
-\usepackage[authoryear,sort&compress]{natbib}
+\usepackage[colon,authoryear,sort&compress]{natbib}
 \usepackage{ccaption}
 \captionwidth{5in}
 \changecaptionwidth
@@ -96,7 +96,7 @@ Against this back drop of quantitative measurements of cell fate, the effect of 
 
 In section \ref{sec:oesophagus-stem} we investigate the claim that there is a discrete population of stem cells \citep{kabalis}, and find some support in the anomalous proportions of single cell clones. However, they are largely quiescent and make negligible contributions to homoeostatic maintenance.
 
-\section{Scaling in theory and practice}
+\section{\label{sec:oesophagus-scaling}Scaling in theory and practice}
 
 \citet{klein08} and \citet{tediousharvard} made extremely detailed studies of equation \eqref{eq:ABC-master}; more specifically, they studied the reduced two-type process where stratified cells were not counted, i.e.\ only basal clonal statistics were considered. They showed that this model exhibits scaling, where in the large time limit $t\rightarrow\infty$ the clone size distribution becomes exponential: $$P^\textrm{surv.}_n \sim \exp\left(-\frac{n}{\left\langle n^\textrm{surv.} \right\rangle}\right)$$ with a linear growth of the average size of surviving clones $\left\langle n^\textrm{surv.} \right\rangle \rightarrow t/\tau$ and characteristic time scale $\tau = \rho/r\lambda$. This can be shown by noting that large clones are macroscopic, and fluctuations in the proportion of CP cells versus differentiated cells are small --- in essence large clones are overwhelmingly likely to be representative of the tissue as a whole. \citealt{tediousharvard} have shown that this process happens remarkably quickly, and clones of even ten cells become quite representative. Thus, we can erase the difference between CP and differentiated cells, and average them into a \emph{representative basal cell} obeying extremely simple dynamics: 
 
@@ -231,7 +231,107 @@ Some clear questions remain:
 
 \chapter{Models of homoeostasis}
 
+\section{Overview}
 
+Whilst a critical Galton-Watson process (see section \ref{sec:oesophagus-scaling}) is capable of describing the clonal size distributions in, for example, oesophageal epithelium or mouse epidermis  \citep{klein08}, it is unsatisfactory for two reasons.
+
+\begin{enumerate}
+\item Homoeostasis is only maintained on average, for the entire tissue. The total number of cells in the system thus makes a one dimensional random walk, with an absorbing boundary which can be ignored in the macroscopic limit; self-consistently we may take the continuum (Fokker-Planck) limit and obtain a simple diffusion, spreading with time with width $~\sqrt{t}$. However, whilst the total number may be macroscopic, the local density is not; the observation of maintained uniform density in oesophageal epithelium motivates a theory of spatial densities, with interactions.
+
+\item The oesophageal epithelium is intrinsically two dimensional; other tissues maybe three dimensional, or even one dimensional (e.g. intestinal crypts). The study of equilibrium universality classes alerts us to the possibility of exceedingly rich structure in low dimensions, motivating a similar expectation for non-equilibrium processes. In addition, the clonal data naturally available comes with two dimensional structure --- each clone may be trivially imaged. The spatial correlations no doubt provide extra constraints on the underlying microscopic model.
+
+\end{enumerate}
+
+The simplest extension of the one-type Galton-Watson process considered in section \ref{sec:oesophagus-scaling} is the \emph{voter model} \citep[][chapter V]{liggettbook}. The basic intuition is a network of voters (cells) who randomly change their opinion (genetic label) to match one of their neighbours. This may generically happen on any graph, but we are mostly concerned with some approximation to $d$-dimensional spaces. This is a well studied model, and we proceed to review the existing work on this, and make some conjectures based on Monte-Carlo simulations. The primary conjecture will be that, at least in 2D (and thus above), it is the prototypic system of a wide universality class, including multi-type division processes and cellular migration. As such, we are interested in its universal and leading order perturbations.
+
+The existing literature broadly falls into two approaches, separated by a language barrier. On the one hand, there is a mathematical literature which details exact results about the classic voter model on square $d$-dimensional lattices; results are rigorous but limited. On the other hand, there is a phenomenological approach which has its roots in the study of critical dynamics, through the use of Langevin equations and renormalisation group as applied to non-equilibrium systems; the results are then of course non-rigorous but explore more of the theory space. The two approaches thus complement each other, and taken together gives good intuition about the voter model and its generalisations.
+
+\section{Exact results}
+
+The classical voter model \citep{voter1,voter2} is defined to be a Markov process $\eta_t(x)$ with $x \in \mathbf S$, $\eta_t \in \mathbf X=\{-1,1\}^\mathbf{S}$, where $\mathbf S$ is some set of positions. The rates of opinion changes are:
+\begin{equation*}
+c(x, \eta) = \begin{cases}
+\sum_y p(x,y) \delta_{\eta(y),1} & \textrm{if $\eta(x) = -1$}, \\
+\sum_y p(x,y) \delta_{\eta(y,-1} & \textrm{if $\eta(x) = 1$},
+\end{cases}
+\end{equation*}
+where $p(x,y) \ge 0$ for $x,y \in \mathbf{S}$ and $$\sum_y p(x,y) = 1 \qquad \textrm{for $x \in \mathbf{S}$}.$$ In other words, a voter at $x$ waits for a unit time and then chooses to flip to match another site $y$ which is chosen with probability $p(x,y)$.
+
+We shall be mostly dealing with $\mathbf S = \mathbb{Z}^d$, square lattices in $d$ dimensions, and possibly $\mathbf S = \mathbb{T}_N^d$, $d$-dimensional tori with sides $N$ (when we wish to examine finite size effects); interactions are also taken to be nearest-neighbour only, i.e.\ $p(x,y) = 1/2d$ for $\left| x - y \right| = 1$. Some of the results quoted in this chapter will be true for less restrictive conditions.
+
+\citet{liggettbook} shows that on $\mathbb{Z}^d$, for $d \le 2$ the only stationary states are $\eta(x) = -1\textrm{ or }1, \forall x$ , and for $d \ge 3$ there is a family of stationary states, with parametrised by the proportion of positive voters $\theta$, which are translation invariant and site-wise uncorrelated. Thus in two dimensions and below, the system orders and above it does not.  However, it is the case that in all dimensions, if we start with an initially disordered state then $\eta_t(0)$ changes state infinitely often as $t \rightarrow \infty$; thus even in low dimensions the system avoids being trapped. We may also approach the question of ordering by considering the density of interfaces, i.e.\ neighbours with opposing opinions. Then it is found that in $d=1$ the density $\rho_t \sim 1/\sqrt{t}$ whilst in $d=2$, $\rho_t \sim 1/\log t$. 
+
+On a torus $\mathbb{T}_N^d$ of side $N$, due to the finiteness, the system will always order, with finite time. \citet{voterconsensus} considers the consensus time of an initially disordered state: $$\tau^{(N)} = \inf \left\{ t \ge 0 : \eta_t(x) = \textrm{$-1$ or $1$}, \forall x \in \mathbb{T}_N^d \right\}.$$ As functions of $N$, the average consensus time diverges as:
+\begin{equation*}
+E\left[\tau^{(N)}\right] = -\left[\theta \log \theta + (1-\theta) \log (1-\theta) \right]\times\begin{cases}
+\frac{1}{6} N^2           & d = 1 \\
+\frac{2}{\pi} N^2 \log N  & d = 2 \\
+K~N^d                     & d \ge 3
+\end{cases}
+\end{equation*}
+where $\theta$ is the initial density of positive votels, and $K$ is an unhelpful constant. \citet{voterconsensus} also finds the exact distribution of consensus times, but they do not have simple forms.
+
+Especially relevant for clonal counting is the behaviour of an initially single positive voter. \citet{bramson&griffeath} studied this case for $\mathbf{S} = \mathbb{Z}^d$. They find that the average size $N_t = \left| \left\{x: \eta_t(x) = 1\right\} \right|$, conditioned on $N_t > 0$ grows asypmtotically:
+\begin{equation*}
+E\left[N_t\middle|N_t>0\right] \overset{t \rightarrow \infty}{\longrightarrow} \begin{cases}
+\sqrt{\pi\,t}         & d = 1 \\
+\frac{\pi\,t}{\log t} & d = 2 \\
+\gamma_d\,t           & d \ge 3
+\end{cases}
+\end{equation*}
+where $\gamma_d$ is the probability that the simple random walk never returns to its initial position. Furthermore, they find the limiting distributions
+\begin{equation*}
+\lim_{t\rightarrow\infty} P\left[\frac{N_t}{E\left[N_t\middle|N_t>0\right]} \le u \middle| N_t > 0\right] = \begin{cases}
+1 - e^{-\pi\,u^2/4} & d = 1 \\
+1 - e^{-u}     & d \ge 2
+\end{cases}
+\end{equation*} for $u \ge 0$.
+
+\paragraph{Coalescing random walk}
+
+Much of the work referenced above exploits a duality of the voter model with a system of coalescing random walkers. Specifically, the probability of of the voter model starting in state $\eta_0$ and ending at $\eta_t$ is the same as starting a system of walkers in state $\eta_t$ and evolving backwards in time to $\eta_0$, a time $t$ later. This is easiest seen graphically:
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=2.2in]{voter-model-duality.png}
+\end{figure}
+
+Note that nothing is said about intermediate states --- no equivalences exist there --- the duality applies only to the initial and final states. As an example of its use, consider trying to find the size of the patch containing the origin in a multi-type voter (each voter has more than two opinions). The origin and another location $y$ will have the same opinion iff there the walkers starting there meet at some time $\tau < t$; this is equivalent to asking if a single random walk starting at the origin will reach $y$ within time $t$, the result of which is known from the seminal works of Erd\"os.
+
+\section{Generalised voter universality class}
+
+The Landau theory of equilibrium phase transitions works phenomenologically, by including in the action all terms allowed by the symmetries of the problem. This is then supplemented by renormalisation group theory, which assures us that under coarse-graining these terms will approach a fixed point. We then identify these fixed points as different phases or phase transitions, and classify them by the number of relevant directions they have in parameter space, i.e.\ the number of potential perturbations which would cause the renormalisation flow to diverge.
+
+In principle, there is nothing in this prescription which requires an equilibrium statistical system. At least formally, any system for which we may write a partition function and can perform the necessary expansions are susceptible. In practice of course, we are extremely limited. Nevertheless, the class of classical non-equilibrium phenomenon has been well studied.
+
+Aside from the studies of approaches to equilibrium, where dynamics are furnished to some system for which we already know the equilibrium theory, e.g.\ Glauber dynamics for the Ising model, which are essentially constrained by a requirement of (eventual) detailed balance, we may also consider truly non-equilibrium systems. A prototypic system is that of \emph{directed percolation}. The name arises from a lattice model in $d+1$ dimensions, where the extra one is time, and asking for the existence of a spanning network, but we will consider it as a theory of population dynamics, following \citet[][chapter 10]{cardybook}.
+
+Let $\phi(r,t)$ describe the local density of a population. Extremely relevant for us is the fact that $\phi(r,t) >= 0$, and $\phi(r,t)=0~\forall r,t$ is an absorbing state --- no fluctuation can restore an extinct population. We thus postulate a Langevin equation to describe the dynamics of this variable: 
+\begin{equation}
+\dot{\phi} = D \nabla^2 \phi + \lambda \phi - \mu \phi^2 + \zeta + \ldots, \label{eq:DP-langevin}
+\end{equation}
+where $\zeta$ is a noise term, generated by self-interaction. We have neglected higher terms in $\phi$ and its derivatives, because they will turn out to be irrelevant near the upper critical dimension ($d=4$). The constants $\lambda$ and $\mu$ may be understood as a birthday and death rate due to over-crowding. In the absence of diffusion and noise there would a dynamic phase transition at $\lambda=0$; for $\lambda < 0$ the population always eventually dies out whilst for $\lambda > 0$ there exists a steady state with $\phi = \lambda/\mu$.
+
+\newcommand{\tphi}{\ensuremath{\tilde \phi}}
+\newcommand{\tJ}{\ensuremath{\tilde J}}
+
+The noise term $\zeta$ is constrained to vanish whenever $\phi$ does. Thus we may consider an approximation $$\zeta = F_0(\phi) + \mu^\prime \phi \eta + \ldots$$ where $F_0(\phi)$ is some function of $\phi$ and its derivatives, and thus may be absorbed into the definitions of $D$, $\lambda$, $\mu$, etc.\ and will henceforth be ignored, $\eta$ is a Gaussian noise source of zero mean and unit variance with no temporal spatial correlations, and neglected terms will again turn out to be irrelevant. 
+
+Physical quantities may be considered as averaging over values of $\phi$ and $\eta$ which obey equation \eqref{eq:DP-langevin}:
+\begin{align*}
+Z &= \int \mathcal{D}\phi \mathcal{D}\eta~\delta\left(-\dot \phi D \nabla^2 \phi + \lambda \phi - \mu \phi^2 + \mu^\prime \phi \eta \right) e^{-\eta^2/2} \\
+&= \int \mathcal{D}\phi \mathcal{D}\tphi \mathcal{D}\eta~\exp\left\{-\int_{r,t}~\left[\tphi \left(-\dot \phi + D \nabla^2 \phi + \lambda \phi - \mu \phi^2 + \mu^\prime \phi \eta \right) + \frac{\eta^2}{2} \right] \right\} \\
+&= \int \mathcal{D}\phi \mathcal{D}\tphi~\exp\left\{-\int_{r,t}~\left[\tphi\dot{\phi} + D \nabla \tphi \cdot \nabla \phi - \lambda\tphi\phi + \tphi\phi\left(\mu\phi - \mu^\prime\tphi \right) \right] \right\} 
+\end{align*}
+where we introduce the \emph{response field} $\tphi$ and integrate over the Gaussian noise $\eta$ which only appears quadratically. The resulting action functional, with the usual fictitious linear source terms
+\begin{equation}
+S[J,\tJ] = \int_{r,t}~\left[\tphi\dot{\phi} + D \nabla \tphi \cdot \nabla \phi - \lambda\tphi\phi + \tphi\phi\left(\mu\phi - \mu^\prime\tphi \right) - J\phi - \tJ\tphi \right]
+\end{equation}
+may then be analysed with the usual field theoretic methods, to yield critical exponents.
+ 
+\section{Monte-Carlo simulations}
+
+\section{Conclusions}
 
 \chapter{Spinal chord}
 

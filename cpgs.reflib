@@ -65,7 +65,7 @@
     <notes></notes>
     <bib_type>article</bib_type>
     <bib_doi>10.1002/aja.1001060305</bib_doi>
-    <bib_title>Cell proliferation and migration as revealed by radioautography after injection of thymidine-H3 into male rats and mice</bib_title>
+    <bib_title>Cell proliferation and migration as revealed by radioautography after injection of thymidine-$\mathrm{H}^3$ into male rats and mice</bib_title>
     <bib_authors>Messier, B. and Leblond, C. P.</bib_authors>
     <bib_journal>Am. J. Anat.</bib_journal>
     <bib_volume>106</bib_volume>
@@ -252,6 +252,110 @@
     <bib_pages>315</bib_pages>
     <bib_year>1998</bib_year>
     <bib_extra key="Publisher">ASPET</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>voterconsensus</key>
+    <notes></notes>
+    <bib_type>Article</bib_type>
+    <bib_doi></bib_doi>
+    <bib_title>Coalescing Random Walks and Voter Model Consensus Times on the Torus in $\mathbb{Z}_d$</bib_title>
+    <bib_authors>Cox, J. T.</bib_authors>
+    <bib_journal>The Annals of Probability</bib_journal>
+    <bib_volume>17</bib_volume>
+    <bib_number>4</bib_number>
+    <bib_pages>1333-1366</bib_pages>
+    <bib_year>1989</bib_year>
+    <bib_extra key="Abstract">Let ηt be the basic voter model on Zd and let η(N) t be the voter model on Λ(N), the torus of side N in Zd. Unlike ηt, η(N) t (for fixed N) gets trapped with probability 1 as t →∞ at all 0’s or all 1’s. We examine the asymptotic growth of these trapping or consensus times τ(N) as N →∞. To do this we obtain limit theorems for coalescing random walk systems on the torus Λ(N), including a new hitting time limit theorem for (noncoalescing) random walk on the torus.</bib_extra>
+    <bib_extra key="Copyright">Copyright © 1989 Institute of Mathematical Statistics</bib_extra>
+    <bib_extra key="Issn">00911798</bib_extra>
+    <bib_extra key="Jstor_articletype">primary_article</bib_extra>
+    <bib_extra key="Jstor_formatteddate">Oct., 1989</bib_extra>
+    <bib_extra key="Publisher">Institute of Mathematical Statistics</bib_extra>
+    <bib_extra key="Url">http://www.jstor.org/stable/2244439</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>bramson&amp;griffeath</key>
+    <notes></notes>
+    <bib_type>article</bib_type>
+    <bib_doi></bib_doi>
+    <bib_title>Asymptotics for interacting particle systems on $\mathbb{Z}_d$</bib_title>
+    <bib_authors>Bramson, M. and Griffeath, D.</bib_authors>
+    <bib_journal>Probability Theory and Related Fields</bib_journal>
+    <bib_volume>53</bib_volume>
+    <bib_number>2</bib_number>
+    <bib_pages>183-196</bib_pages>
+    <bib_year>1980</bib_year>
+    <bib_extra key="Publisher">Springer</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>liggettbook</key>
+    <notes></notes>
+    <bib_type>Book</bib_type>
+    <bib_doi></bib_doi>
+    <bib_title>Interacting particle systems</bib_title>
+    <bib_authors>Liggett, T. M.</bib_authors>
+    <bib_journal></bib_journal>
+    <bib_volume></bib_volume>
+    <bib_number></bib_number>
+    <bib_pages></bib_pages>
+    <bib_year>2004</bib_year>
+    <bib_extra key="Publisher">Springer Verlag</bib_extra>
+    <bib_extra key="Series"></bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>voter1</key>
+    <notes></notes>
+    <bib_type>Article</bib_type>
+    <bib_doi></bib_doi>
+    <bib_title>Ergodic theorems for weakly interacting infinite systems and the voter model</bib_title>
+    <bib_authors>Holley, R. A. and Liggett, T. M.</bib_authors>
+    <bib_journal>The annals of probability</bib_journal>
+    <bib_volume>3</bib_volume>
+    <bib_number>4</bib_number>
+    <bib_pages>643-663</bib_pages>
+    <bib_year>1975</bib_year>
+    <bib_extra key="Publisher">JSTOR</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>voter2</key>
+    <notes></notes>
+    <bib_type>Article</bib_type>
+    <bib_doi></bib_doi>
+    <bib_title>A model for spatial conflict</bib_title>
+    <bib_authors>Clifford, P. and Sudbury, A.</bib_authors>
+    <bib_journal>Biometrika</bib_journal>
+    <bib_volume>60</bib_volume>
+    <bib_number>3</bib_number>
+    <bib_pages>581</bib_pages>
+    <bib_year>1973</bib_year>
+    <bib_extra key="Publisher">Biometrika Trust</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>cardybook</key>
+    <notes></notes>
+    <bib_type>Book</bib_type>
+    <bib_doi></bib_doi>
+    <bib_title>Scaling and renormalization in statistical physics</bib_title>
+    <bib_authors>Cardy, J. L.</bib_authors>
+    <bib_journal></bib_journal>
+    <bib_volume></bib_volume>
+    <bib_number></bib_number>
+    <bib_pages></bib_pages>
+    <bib_year>1996</bib_year>
+    <bib_extra key="Publisher">Cambridge Univ Pr</bib_extra>
+    <bib_extra key="Series"></bib_extra>
   </doc>
 </doclist>
 </library>
