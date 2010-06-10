@@ -8,10 +8,10 @@
   <doc>
     <filename></filename>
     <relative_filename></relative_filename>
-    <key>PhysRevE.76.021910</key>
+    <key>klein07</key>
     <notes></notes>
-    <bib_type>Article</bib_type>
-    <bib_doi></bib_doi>
+    <bib_type>article</bib_type>
+    <bib_doi>10.1103/PhysRevE.76.021910</bib_doi>
     <bib_title>Kinetics of cell division in epidermal maintenance</bib_title>
     <bib_authors>Klein, Allon M. and Doupé, David P. and Jones, Phillip H. and Simons, Benjamin D.</bib_authors>
     <bib_journal>Phys. Rev. E</bib_journal>
@@ -19,8 +19,7 @@
     <bib_number>2</bib_number>
     <bib_pages>021910</bib_pages>
     <bib_year>2007</bib_year>
-    <bib_extra key="Doi">10.1103/PhysRevE.76.021910</bib_extra>
-    <bib_extra key="Month">Aug</bib_extra>
+    <bib_extra key="Month">8</bib_extra>
     <bib_extra key="Numpages">13</bib_extra>
     <bib_extra key="Publisher">American Physical Society</bib_extra>
   </doc>
@@ -137,7 +136,7 @@
     <bib_number></bib_number>
     <bib_pages></bib_pages>
     <bib_year>2008</bib_year>
-    <bib_extra key="month">April</bib_extra>
+    <bib_extra key="month">4</bib_extra>
     <bib_extra key="school">Cambridge University</bib_extra>
   </doc>
   <doc>
@@ -356,6 +355,78 @@
     <bib_year>1996</bib_year>
     <bib_extra key="Publisher">Cambridge Univ Pr</bib_extra>
     <bib_extra key="Series"></bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>DPnprg</key>
+    <notes></notes>
+    <bib_type>article</bib_type>
+    <bib_doi>10.1103/PhysRevLett.92.195703</bib_doi>
+    <bib_title>Nonperturbative Renormalization-Group Study of Reaction-Diffusion Processes</bib_title>
+    <bib_authors>Canet, Léonie and Delamotte, Bertrand and Deloubrière, Olivier and Wschebor, Nicolas</bib_authors>
+    <bib_journal>Phys. Rev. Lett.</bib_journal>
+    <bib_volume>92</bib_volume>
+    <bib_number>19</bib_number>
+    <bib_pages>195703</bib_pages>
+    <bib_year>2004</bib_year>
+    <bib_extra key="Month">May</bib_extra>
+    <bib_extra key="Numpages">4</bib_extra>
+    <bib_extra key="Publisher">American Physical Society</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>voterlangevin</key>
+    <notes></notes>
+    <bib_type>article</bib_type>
+    <bib_doi>10.1103/PhysRevLett.94.230601</bib_doi>
+    <bib_title>Langevin Description of Critical Phenomena with Two Symmetric Absorbing States</bib_title>
+    <bib_authors>Al Hammal, Omar and Chaté, Hugues and Dornic, Ivan and Muñoz, Miguel A.</bib_authors>
+    <bib_journal>Phys. Rev. Lett.</bib_journal>
+    <bib_volume>94</bib_volume>
+    <bib_number>23</bib_number>
+    <bib_pages>230601</bib_pages>
+    <bib_year>2005</bib_year>
+    <bib_extra key="Month">6</bib_extra>
+    <bib_extra key="Numpages">4</bib_extra>
+    <bib_extra key="Publisher">American Physical Society</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>canet05</key>
+    <notes></notes>
+    <bib_type>article</bib_type>
+    <bib_doi>10.1103/PhysRevLett.95.100601</bib_doi>
+    <bib_title>Nonperturbative Fixed Point in a Nonequilibrium Phase Transition</bib_title>
+    <bib_authors>Canet, Léonie and Chaté, Hugues and Delamotte, Bertrand and Dornic, Ivan and Muñoz, Miguel A.</bib_authors>
+    <bib_journal>Phys. Rev. Lett.</bib_journal>
+    <bib_volume>95</bib_volume>
+    <bib_number>10</bib_number>
+    <bib_pages>100601</bib_pages>
+    <bib_year>2005</bib_year>
+    <bib_extra key="Month">Aug</bib_extra>
+    <bib_extra key="Numpages">4</bib_extra>
+    <bib_extra key="Publisher">American Physical Society</bib_extra>
+  </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>dornic01</key>
+    <notes></notes>
+    <bib_type>article</bib_type>
+    <bib_doi>10.1103/PhysRevLett.87.045701</bib_doi>
+    <bib_title>Critical Coarsening without Surface Tension: The Universality Class of the Voter Model</bib_title>
+    <bib_authors>Dornic, Ivan and Chaté, Hugues and Chave, Jérôme and Hinrichsen, Haye</bib_authors>
+    <bib_journal>Phys. Rev. Lett.</bib_journal>
+    <bib_volume>87</bib_volume>
+    <bib_number>4</bib_number>
+    <bib_pages>045701</bib_pages>
+    <bib_year>2001</bib_year>
+    <bib_extra key="Month">Jul</bib_extra>
+    <bib_extra key="Numpages">4</bib_extra>
+    <bib_extra key="Publisher">American Physical Society</bib_extra>
   </doc>
 </doclist>
 </library>

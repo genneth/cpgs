@@ -5,6 +5,7 @@
 \geometry{verbose}
 \pagestyle{plain}
 \usepackage{babel}
+\usepackage{csquotes}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{setspace}
@@ -20,7 +21,11 @@
 \usepackage{microtype}
 \usepackage{nicefrac}
 
-\usepackage[colon,authoryear,sort&compress]{natbib}
+%\usepackage[colon,authoryear,sort&compress]{natbib}
+
+\usepackage[natbib=true]{biblatex}
+\bibliography{cpgs}
+
 \usepackage{ccaption}
 \captionwidth{5in}
 \changecaptionwidth
@@ -41,10 +46,8 @@
 
 \begin{abstract}
 \addcontentsline{toc}{chapter}{Abstract}
-\end{abstract}
-
 Abstract
-
+\end{abstract}
 
 \tableofcontents
 
@@ -52,7 +55,7 @@ Abstract
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
-Introduction \citep{clayton}
+Introduction \citet{clayton}
 
 \chapter{Parameters of epithelial maintenance}
 
@@ -62,14 +65,14 @@ The oesophagus is lined with stratified squamous epithelium. That is, it consist
 
 Proliferation in the oesophageal epithelium is confined to cells in the basal layer \citep{leblond}. These proliferating cells may commit to terminal differentiation and exit the cell cycle, and migrate (stratify) into the first suprabasal layer. They then undergo dramatic changes whilst continuing migration upwards, which eventually result in their loss by shedding at the surface \citep{seery}.
 
-\begin{figure}[htb]
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=4in]{oesophagus-anatomy.png}
 \end{figure}
 
-\citet{klein08} introduced a non-equilibrium model for the homoeostatic maintenance, based around a single population of \emph{committed progenitors} (CP) cells:
+\citet{klein07} introduced a non-equilibrium model for the homoeostatic maintenance, based around a single population of \emph{committed progenitors} (CP) cells:
 
-\begin{figure}[htb]
+\begin{figure}[h]
 	\centering
 	\includegraphics[width=4in]{oesophagus-division-process.png}
 \end{figure}
@@ -98,7 +101,7 @@ In section \ref{sec:oesophagus-stem} we investigate the claim that there is a di
 
 \section{\label{sec:oesophagus-scaling}Scaling in theory and practice}
 
-\citet{klein08} and \citet{tediousharvard} made extremely detailed studies of equation \eqref{eq:ABC-master}; more specifically, they studied the reduced two-type process where stratified cells were not counted, i.e.\ only basal clonal statistics were considered. They showed that this model exhibits scaling, where in the large time limit $t\rightarrow\infty$ the clone size distribution becomes exponential: $$P^\textrm{surv.}_n \sim \exp\left(-\frac{n}{\left\langle n^\textrm{surv.} \right\rangle}\right)$$ with a linear growth of the average size of surviving clones $\left\langle n^\textrm{surv.} \right\rangle \rightarrow t/\tau$ and characteristic time scale $\tau = \rho/r\lambda$. This can be shown by noting that large clones are macroscopic, and fluctuations in the proportion of CP cells versus differentiated cells are small --- in essence large clones are overwhelmingly likely to be representative of the tissue as a whole. \citealt{tediousharvard} have shown that this process happens remarkably quickly, and clones of even ten cells become quite representative. Thus, we can erase the difference between CP and differentiated cells, and average them into a \emph{representative basal cell} obeying extremely simple dynamics: 
+\citet{klein07} and \citet{tediousharvard} made extremely detailed studies of equation \eqref{eq:ABC-master}; more specifically, they studied the reduced two-type process where stratified cells were not counted, i.e.\ only basal clonal statistics were considered. They showed that this model exhibits scaling, where in the large time limit $t\rightarrow\infty$ the clone size distribution becomes exponential: $$P^\textrm{surv.}_n \sim \exp\left(-\frac{n}{\left\langle n^\textrm{surv.} \right\rangle}\right)$$ with a linear growth of the average size of surviving clones $\left\langle n^\textrm{surv.} \right\rangle \rightarrow t/\tau$ and characteristic time scale $\tau = \rho/r\lambda$. This can be shown by noting that large clones are macroscopic, and fluctuations in the proportion of CP cells versus differentiated cells are small --- in essence large clones are overwhelmingly likely to be representative of the tissue as a whole. \citealt{tediousharvard} have shown that this process happens remarkably quickly, and clones of even ten cells become quite representative. Thus, we can erase the difference between CP and differentiated cells, and average them into a \emph{representative basal cell} obeying extremely simple dynamics: 
 
 \begin{figure}[h]
 	\centering
@@ -233,7 +236,7 @@ Some clear questions remain:
 
 \section{Overview}
 
-Whilst a critical Galton-Watson process (see section \ref{sec:oesophagus-scaling}) is capable of describing the clonal size distributions in, for example, oesophageal epithelium or mouse epidermis  \citep{klein08}, it is unsatisfactory for two reasons.
+Whilst a critical Galton-Watson process (see section \ref{sec:oesophagus-scaling}) is capable of describing the clonal size distributions in, for example, oesophageal epithelium or mouse epidermis  \citep{klein07}, it is unsatisfactory for two reasons.
 
 \begin{enumerate}
 \item Homoeostasis is only maintained on average, for the entire tissue. The total number of cells in the system thus makes a one dimensional random walk, with an absorbing boundary which can be ignored in the macroscopic limit; self-consistently we may take the continuum (Fokker-Planck) limit and obtain a simple diffusion, spreading with time with width $~\sqrt{t}$. However, whilst the total number may be macroscopic, the local density is not; the observation of maintained uniform density in oesophageal epithelium motivates a theory of spatial densities, with interactions.
@@ -242,7 +245,7 @@ Whilst a critical Galton-Watson process (see section \ref{sec:oesophagus-scaling
 
 \end{enumerate}
 
-The simplest extension of the one-type Galton-Watson process considered in section \ref{sec:oesophagus-scaling} is the \emph{voter model} \citep[][chapter V]{liggettbook}. The basic intuition is a network of voters (cells) who randomly change their opinion (genetic label) to match one of their neighbours. This may generically happen on any graph, but we are mostly concerned with some approximation to $d$-dimensional spaces. This is a well studied model, and we proceed to review the existing work on this, and make some conjectures based on Monte-Carlo simulations. The primary conjecture will be that, at least in 2D (and thus above), it is the prototypic system of a wide universality class, including multi-type division processes and cellular migration. As such, we are interested in its universal and leading order perturbations.
+The simplest extension of the one-type Galton-Watson process considered in section \ref{sec:oesophagus-scaling} is the \emph{voter model} \citep[][chapter V]{liggettbook}. The basic intuition is a network of voters (cells) who randomly change their opinion (genetic label) to match one of their neighbours. This may generically happen on any graph, but we are mostly concerned with some approximation to $d$-dimensional spaces. This is a well studied model, and we proceed to review the existing work on this, and make some conjectures based on Monte-Carlo simulations. The primary conjecture will be that, at least in 2D (and thus above), it is the prototypic system of a wide universality class, including multi-type division processes and cellular migration \citep{klein08}. As such, we are interested in its universal and leading order perturbations.
 
 The existing literature broadly falls into two approaches, separated by a language barrier. On the one hand, there is a mathematical literature which details exact results about the classic voter model on square $d$-dimensional lattices; results are rigorous but limited. On the other hand, there is a phenomenological approach which has its roots in the study of critical dynamics, through the use of Langevin equations and renormalisation group as applied to non-equilibrium systems; the results are then of course non-rigorous but explore more of the theory space. The two approaches thus complement each other, and taken together gives good intuition about the voter model and its generalisations.
 
@@ -259,7 +262,7 @@ where $p(x,y) \ge 0$ for $x,y \in \mathbf{S}$ and $$\sum_y p(x,y) = 1 \qquad \te
 
 We shall be mostly dealing with $\mathbf S = \mathbb{Z}^d$, square lattices in $d$ dimensions, and possibly $\mathbf S = \mathbb{T}_N^d$, $d$-dimensional tori with sides $N$ (when we wish to examine finite size effects); interactions are also taken to be nearest-neighbour only, i.e.\ $p(x,y) = 1/2d$ for $\left| x - y \right| = 1$. Some of the results quoted in this chapter will be true for less restrictive conditions.
 
-\citet{liggettbook} shows that on $\mathbb{Z}^d$, for $d \le 2$ the only stationary states are $\eta(x) = -1\textrm{ or }1, \forall x$ , and for $d \ge 3$ there is a family of stationary states, with parametrised by the proportion of positive voters $\theta$, which are translation invariant and site-wise uncorrelated. Thus in two dimensions and below, the system orders and above it does not.  However, it is the case that in all dimensions, if we start with an initially disordered state then $\eta_t(0)$ changes state infinitely often as $t \rightarrow \infty$; thus even in low dimensions the system avoids being trapped. We may also approach the question of ordering by considering the density of interfaces, i.e.\ neighbours with opposing opinions. Then it is found that in $d=1$ the density $\rho_t \sim 1/\sqrt{t}$ whilst in $d=2$, $\rho_t \sim 1/\log t$. 
+\citet{liggettbook} shows that on $\mathbb{Z}^d$, for $d \le 2$ the only stationary states are $\eta(x) = -1\textrm{ or }1, \forall x$, and for $d \ge 3$ there is a family of stationary states, with parametrised by the proportion of positive voters $\theta$, which are translation invariant. Thus in two dimensions and below, the system orders and above it does not.  However, it is the case that in all dimensions, if we start with an initially disordered state then $\eta_t(0)$ changes state infinitely often as $t \rightarrow \infty$; thus even in low dimensions the system avoids being trapped. We may also approach the question of ordering by considering the density of interfaces, i.e.\ neighbours with opposing opinions. Then it is found that in $d=1$ the density $\rho_t \sim 1/\sqrt{t}$ whilst in $d=2$, $\rho_t \sim 1/\log t$. 
 
 On a torus $\mathbb{T}_N^d$ of side $N$, due to the finiteness, the system will always order, with finite time. \citet{voterconsensus} considers the consensus time of an initially disordered state: $$\tau^{(N)} = \inf \left\{ t \ge 0 : \eta_t(x) = \textrm{$-1$ or $1$}, \forall x \in \mathbb{T}_N^d \right\}.$$ As functions of $N$, the average consensus time diverges as:
 \begin{equation*}
@@ -285,30 +288,35 @@ where $\gamma_d$ is the probability that the simple random walk never returns to
 1 - e^{-\pi\,u^2/4} & d = 1 \\
 1 - e^{-u}     & d \ge 2
 \end{cases}
-\end{equation*} for $u \ge 0$.
+\end{equation*} for $u \ge 0$. However, as we shall see below, for $d=2$ the convergence is extremely slow, and so for practical time scales the limiting distribution never occurs.
 
 \paragraph{Coalescing random walk}
 
-Much of the work referenced above exploits a duality of the voter model with a system of coalescing random walkers. Specifically, the probability of of the voter model starting in state $\eta_0$ and ending at $\eta_t$ is the same as starting a system of walkers in state $\eta_t$ and evolving backwards in time to $\eta_0$, a time $t$ later. This is easiest seen graphically:
+Much of the work referenced above exploits a duality of the voter model with a system of coalescing random walkers. Specifically, the probability of of the voter model starting in state $\eta_0$ and ending at $\eta_t$ is the same as starting a system of walkers in state $\eta_t$ and evolving backwards in time to $\eta_0$, a time $t$ later. This is easiest seen graphically (figure \ref{fig:voter-model-duality}).
 
-\begin{figure}[h]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=2.2in]{voter-model-duality.png}
+	\caption{\label{fig:voter-model-duality}Duality between voter model and coalescing random walk. Notice that for a given history $\eta_t$ the duality only applies for the start and end states, and not the states in the middle.}
 \end{figure}
 
-Note that nothing is said about intermediate states --- no equivalences exist there --- the duality applies only to the initial and final states. As an example of its use, consider trying to find the size of the patch containing the origin in a multi-type voter (each voter has more than two opinions). The origin and another location $y$ will have the same opinion iff there the walkers starting there meet at some time $\tau < t$; this is equivalent to asking if a single random walk starting at the origin will reach $y$ within time $t$, the result of which is known from the seminal works of Erd\"os.
+Note that nothing is said about intermediate states --- no equivalences exist there --- the duality applies only to the initial and final states. As an example of its use, consider trying to find the size of the patch containing the origin in a multi-type voter (each voter has more than two opinions). The origin and another location $y$ will have the same opinion iff there the walkers starting there meet at some time $\tau < t$; this is equivalent to asking if a single random walk starting at the origin will reach $y$ within time $2t$, the result of which is known from the seminal works of Erd\"os.
 
 \section{Generalised voter universality class}
 
 The Landau theory of equilibrium phase transitions works phenomenologically, by including in the action all terms allowed by the symmetries of the problem. This is then supplemented by renormalisation group theory, which assures us that under coarse-graining these terms will approach a fixed point. We then identify these fixed points as different phases or phase transitions, and classify them by the number of relevant directions they have in parameter space, i.e.\ the number of potential perturbations which would cause the renormalisation flow to diverge.
 
-In principle, there is nothing in this prescription which requires an equilibrium statistical system. At least formally, any system for which we may write a partition function and can perform the necessary expansions are susceptible. In practice of course, we are extremely limited. Nevertheless, the class of classical non-equilibrium phenomenon has been well studied.
+In principle, there is nothing in this prescription which requires an equilibrium statistical system. At least formally, any system for which we may write a partition function and can perform the necessary expansions are susceptible. In practice of course, we are extremely limited. Nevertheless, the class of classical non-equilibrium phenomenon has been well studied, and that includes the voter model. Indeed, it actually includes considerable generalisations to the voter model. The class we will consider below are defined by, as always, its dimensions and symmetries: we consider an order parameter which is a single component field $\phi$ representing the local ``magnetisation'' --- e.g.\ $+1$ is labelled, $-1$ is not; we require the theory to be symmetric under $\phi \rightarrow -\phi$; and there be no fluctuations when $\phi=\pm 1$, i.e. they are absorbing states. This class we shall denote the \emph{generalised voter model}.
 
-Aside from the studies of approaches to equilibrium, where dynamics are furnished to some system for which we already know the equilibrium theory, e.g.\ Glauber dynamics for the Ising model, which are essentially constrained by a requirement of (eventual) detailed balance, we may also consider truly non-equilibrium systems. A prototypic system is that of \emph{directed percolation}. The name arises from a lattice model in $d+1$ dimensions, where the extra one is time, and asking for the existence of a spanning network, but we will consider it as a theory of population dynamics, following \citet[][chapter 10]{cardybook}.
+At this point, it is worth building some intuition by translating the results of the previous section into more ``physicist'' language. The lack of stationary states in one and two dimensions, apart from the trivial absorbing ones, is a sign of macroscopic ordering --- the order parameter breaks the $\mathbb{Z}_2$ symmetry. In three dimensions, such ordering is not guaranteed --- indeed, it can be shown that it is almost certain the overall magnetisation will not change from the initial starting value. In fact, $d=2$ is a critical point --- it is known that random walk recurrence is critical there, and we can see evidence for it in the various logarithms which appear in the asymptotic results as a result of critical slow down. However, the fact that it is logarithmic and not some power law implies a potential failure of naive perturbation theory, something which we shall need to be careful about.
+
+\subsection{Directed percolation}
+
+The theory of single component, \emph{single} absorbing state is that of \emph{directed percolation} \citep[][section 10.6]{cardybook}. Because this is a well-studied system, we use it as a road-map for a similar attempt at the generalised voter model.
 
 Let $\phi(r,t)$ describe the local density of a population. Extremely relevant for us is the fact that $\phi(r,t) >= 0$, and $\phi(r,t)=0~\forall r,t$ is an absorbing state --- no fluctuation can restore an extinct population. We thus postulate a Langevin equation to describe the dynamics of this variable: 
 \begin{equation}
-\dot{\phi} = D \nabla^2 \phi + \lambda \phi - \mu \phi^2 + \zeta + \ldots, \label{eq:DP-langevin}
+\partial_t \phi = D \nabla^2 \phi + \lambda \phi - \mu \phi^2 + \zeta + \ldots, \label{eq:DP-langevin}
 \end{equation}
 where $\zeta$ is a noise term, generated by self-interaction. We have neglected higher terms in $\phi$ and its derivatives, because they will turn out to be irrelevant near the upper critical dimension ($d=4$). The constants $\lambda$ and $\mu$ may be understood as a birthday and death rate due to over-crowding. In the absence of diffusion and noise there would a dynamic phase transition at $\lambda=0$; for $\lambda < 0$ the population always eventually dies out whilst for $\lambda > 0$ there exists a steady state with $\phi = \lambda/\mu$.
 
@@ -327,13 +335,67 @@ where we introduce the \emph{response field} $\tphi$ and integrate over the Gaus
 \begin{equation}
 S[J,\tJ] = \int_{r,t}~\left[\tphi\dot{\phi} + D \nabla \tphi \cdot \nabla \phi - \lambda\tphi\phi + \tphi\phi\left(\mu\phi - \mu^\prime\tphi \right) - J\phi - \tJ\tphi \right]
 \end{equation}
-may then be analysed with the usual field theoretic methods, to yield critical exponents.
+may then be analysed with the usual field theoretic methods, to yield critical exponents. In particular, a powerful numerical method based around \emph{non-perturbative renormalisation group} \citep{DPnprg} is capable of handling potentially troublesome anomalous scaling of coherence length, such as the Kosterlitz--Thouless transition, without putting in non-perturbative elements such as vortices by hand.
+
+\subsection{Voter model}
+
+\citet{voterlangevin} proposed, for the generalised voter model:
+\begin{equation}
+\partial_t \phi = D \nabla^2 \phi + (a \phi - b \phi^3)(1-\phi^2) + \sigma \sqrt{1-\phi^2} \eta, \label{eq:voter-langevin}
+\end{equation}
+where again $\eta$ is a Gaussian noise source with zero mean and unit variance. Although equation \eqref{eq:voter-langevin} is motivated by the possibility of multiple transitions, it is also thought to be complete with respect to the relevant terms.
+
+\citet{canet05} then undertakes a non-perturbative renormalisation group analysis of equation \eqref{eq:voter-langevin}; in one dimension they find a critical point corresponding to the critical voter dynamics, and a stable point corresponding to an annihilating random walk; in two dimensions they find that the only stable fixed point is the voter model; in three dimensions and above, only the Gaussian point --- disordered state --- is stable.
  
 \section{Monte-Carlo simulations}
 
+\citet{dornic01} has considered a variety of modifications of the voter model, and concludes that it is the basin of attraction of a wide range of models; this is obviously supported by the renormalisation group analysis by \citet{canet05}.
+
+Broadly however, the interest has not been concentrated on clone size distributions. Although the theoretical work of \citet{bramson&griffeath} gives the limiting distributions, it does not give indications of the rates of convergence; in particular, in two dimensions (i.e.\ critical) the convergence appears to be very slow (figure \ref{fig:voter-clone-size-distribution}). Thus we performed some Monte-Carlo simulations of the voter model, starting with one single labelled cell, and observing the size distribution of surviving clones. For computational efficiency we actually simulate a multi-type voter distribution where each initial cell is labelled with a different colour; this also allows easy visualisation of the coarsening process (figure \ref{fig:multitype-voter-coarsen}).
+
+\begin{figure}[htb]
+	\centering
+	\hfill\includegraphics[width=128pt]{voter-coarsen/1.png}
+	\hfill\includegraphics[width=128pt]{voter-coarsen/4.png}
+	\hfill\includegraphics[width=128pt]{voter-coarsen/16.png}\hfill~\\
+	\vspace{0.1in}
+	\hfill\includegraphics[width=128pt]{voter-coarsen/64.png}
+	%\includegraphics[width=2in]{voter-coarsen/256.png}
+	%\includegraphics[width=2in]{voter-coarsen/1024.png}
+	\hfill~
+	\caption{\label{fig:multitype-voter-coarsen}The classic voter model shows coarsening with length scale proportional to $\log(t)$; shown are typical multi-type voter process at times $t=1,4,16,64$, in units of mean voter opinion change. }
+\end{figure}
+
+\begin{figure}[htb]
+	\centering
+	%\includegraphics[width=2.2in]{}
+	\caption{\label{fig:voter-clone-size-distribution}Clone size distribution (cumulative) of the classic voter dynamics in two dimensions. The limiting distribution for is exponential \citep{bramson&griffeath}, but the approach is extremely slow. For all practical times, there is a small reduction in small clones and a ``hump'' which moves left.}
+\end{figure}
+
+It is also possible to insert post-mitotic cells into the simulation, and obtain a system similar to \citet{klein08}. Here however, we are interested in clonal distribution as opposed to clustering of progenitor cells. In particular, we can modify the amount of diffusion of vacancies left by stratified post-mitotic cells; this essentially introduces long-ranged interactions into the model. Preliminary observations indicate that the model becomes quite sensitive to initial conditions. In particular, it is possible to get a clone size distribution which really is exponential; alternatively, it is possible to get one which has an excess of small clones, rather than the usual reduction.
+
 \section{Conclusions}
 
+As \citet{dornic01} points out, a crucial feature of the voter model is a lack of surface tension. Labelling experiments introduce boundaries which are physiologically meaningless, and must therefore be devoid of surface tension. Further, (genetic) labelling clearly has two absorbing states, and the dynamics is symmetric under exchange of labelled and non-labelled cells. As we have seen, there is considerable evidence that the critical dynamics falls into the universality class of a generalised voter model.
+
+Our Monte-Carlo simulations have the following interpretation: there are two length scales in the problem --- the coherence length, i.e.\ typical clone size, and the interaction length, which is roughly how far a replacement cell is from the stratified one. At early times in a labelling experiment, the coherence length is short, and potentially shorter than the interaction length; in this regime, the dynamics is essentially mean-field and a rapid convergence to exponential scaling occurs; once the coherence length increases sufficiently, any deviations from the limiting exponential distribution only decays slowly, possibility logarithmically. If instead some other non-representational labelling occurs, then a different deviation from scaling will be frozen in. This ability to freeze in the microscopic dynamics is surely useful.
+
+Some potential directions are:
+
+\begin{enumerate}
+
+\item Obtain the leading order corrections to the exponential scaling function, or at least conjecture one.
+
+\item Extend the work of \citet{canet05} using the non-perturbative renormalisation group to understand the leading irrelevant operators (since there does not appear to be any relevant ones).
+
+\item Link the phenomenlogical parameters in equation \eqref{eq:voter-langevin} to a microscopic theory. In conjunction with understanding of irrelevant operators, this would allow inference of microscopic parameters.
+
+\item Break the assumption of homoeostasis, but maintain the spatial interactions. It is observed sometimes that signalling boundaries during development are not sharp, but become so over time. Could this be fully accounted for by a theory of interacting progenitors which are not in homoeostasis?
+
+\end{enumerate}
+
 \chapter{Spinal chord}
+
 
 \chapter{Discussion and future work}
 
@@ -341,7 +403,7 @@ may then be analysed with the usual field theoretic methods, to yield critical e
 \newpage
 \addcontentsline{toc}{chapter}{References}
 \renewcommand\bibname{References}
-\bibliographystyle{abbrvnat}
-\bibliography{cpgs}
+%\bibliographystyle{apsrev}
+\printbibliography[]
 
 \end{document}
