@@ -428,5 +428,20 @@
     <bib_extra key="Numpages">4</bib_extra>
     <bib_extra key="Publisher">American Physical Society</bib_extra>
   </doc>
+  <doc>
+    <filename></filename>
+    <relative_filename></relative_filename>
+    <key>chaitin2002intelligibility</key>
+    <notes></notes>
+    <bib_type>Article</bib_type>
+    <bib_doi></bib_doi>
+    <bib_title>On the intelligibility of the universe and the notions of simplicity, complexity and irreducibility</bib_title>
+    <bib_authors>Chaitin, G. J.</bib_authors>
+    <bib_journal>Arxiv preprint math/0210035</bib_journal>
+    <bib_volume></bib_volume>
+    <bib_number></bib_number>
+    <bib_pages></bib_pages>
+    <bib_year>2002</bib_year>
+  </doc>
 </doclist>
 </library>

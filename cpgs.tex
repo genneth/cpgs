@@ -55,9 +55,29 @@ Abstract
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
-Introduction \citet{clayton}
+Modern biochemistry has made enormous progress in understanding the laws governing life. We now know the framework by which cells undergo their business, we can sequence DNA and RNA at will, and are beginning to understand the complex interplay of those elements with proteins. This reductionist approach, ubiquitously successful elsewhere in science, promises much.
 
-\chapter{Parameters of epithelial maintenance}
+Nevertheless, just like full understanding of fundamental physics, \emph{ala} the Standard Model of particle physics, is unnecessary for understanding properties of superconductors, we would argue that the wealth of biochemical information may be distilled into simple models. Indeed, such a distillation may be necessary, for two reasons. One is what we would do if we had exact knowledge of all biochemical pathways in cellular processes, including the ability to understand protein expression; even in a given cell, the number and speed of such chemical reactions would lead to models with such bewildering complexity that even if we were able to solve them, we would hardly \emph{understand} better the system --- ``comprehension is compression'' \citep{chaitin2002intelligibility}. Two is that new laws can emerge from collective phenomenon; just like superconductivity has nothing to do with a single electron, or even a handful, it may be that at the tissue level, the dominant phenomena are emergent behaviours of a macroscopic number of cells.
+
+In recent years, we have seen the raise in popularity in so-called ``systems biology'', where one tries to measure as much quantitative data as possible (gene expressions, chemical concentrations and gradients, etc.) and incorporate such data with mathematical models which attempt to account for as much of known interactions and interrelations as possible. From this point, macroscopic characteristics such as functional states of the cells and even tissue may be quantitatively understood. This has been especially successful in systems where the relevant system components can be identified with ease, such as in prokaryotes or simple single-celled eukaryotes [??]. However, in truly multi-cellular tissue, the possible interactions and cell fate are potentially much more complex.
+
+We thus promote a phenomenological approach, where a theory is sought which directly relate measurable macroscopic quantities, motivated by obvious constraints such as spatial homogeneity or existence of robust long-term physiological function. Such models are justified solely by their predictive ability, and can assist in identifying the relevant microscopic components, which may then be used in a fuller theory.
+
+Such an approach has enjoyed great success in traditional condensed matter, culminating in the great Landau theory of equilibrium phase transitions, and the understanding of ``universality'', where wildly different microscopic systems nevertheless shared exact quantitative behaviours. Such approaches have also been pushed to study non-equilibrium systems \citet[chapter 10]{cardybook}, and have revealed a consistent and richer landscape. There is nothing special about biological tissue which precludes such an approach.
+
+We are aided by the recent availability of experimental techniques capable of tracking tissue growth with cellular resolution. In particular, inducible genetic labelling gives access to \emph{full counting statistics} which are not even available in traditional condensed matter systems. In addition, it may be possible to truly measure two point correlations, in both time and space. Such wealth of experimental data are unimaginable with electrons, phonons, etc., and as such may provide fertile testing ground for well developed theories which has so far lacked the necessary experimental verification.
+
+\paragraph{Outline of research}
+
+In chapter \ref{ch:oes} we study a model tissue of squamous stratified epithelium: mice oesophagus. It is a continuation of the work in \citet{clayton,klein07}. The availability of full counting statistics (as opposed to just statistics of the basal layer) allows us unprecedented power in resolving cell fate. This ability is then applied to further understand cell cycle, drug treatment and scrutinise a suggestion of a discrete sub-population of stem cells.
+
+In chapter \ref{ch:voter} we begin exploring the phenomenological theories of non-equilibrium which obey the tight constraints of spatial homogeneity and tissue homoeostasis.
+
+In chapter \ref{ch:spinal-chord} we present some preliminary work on a system far from homoeostasis: the development of spinal chord in chick embryo. The existence of precise counts of cells at each stage of development provides strong constraints when considering models of cell fate choice.
+
+We conclude with a discussion of open questions and potential future work in chapter \ref{ch:conclusion}.
+
+\chapter{\label{ch:oes}Parameters of epithelial maintenance}
 
 This work has been carried out in collaboration with Phil Jones and David Doup\'e at MCR Hutchinson, Cambridge.
 
@@ -234,7 +254,7 @@ Some clear questions remain:
 
 \end{itemize}
 
-\chapter{Voting on homoeostasis}
+\chapter{\label{ch:voter}Voting on homoeostasis}
 
 \section{Overview}
 
@@ -396,7 +416,7 @@ Some potential directions are:
 
 \end{enumerate}
 
-\chapter{Spinal chord}
+\chapter{\label{ch:spinal-chord}Spinal chord}
 
 \paragraph{Overview}
 
@@ -468,7 +488,7 @@ With a basic division process fixed, it is now feasible to consider clonal analy
 
 
 
-\chapter{Discussion and future work}
+\chapter{\label{ch:conclusion}Discussion and future work}
 
 
 \newpage
